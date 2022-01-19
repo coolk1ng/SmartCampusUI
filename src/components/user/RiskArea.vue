@@ -1,12 +1,12 @@
 <template>
 <div>
-  用户管理
+  风险地区
 </div>
 </template>
 
 <script>
 export default {
-  name: "UserManage"
+  name: "RiskArea"
 }
 </script>
 

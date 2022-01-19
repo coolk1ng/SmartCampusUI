@@ -25,6 +25,7 @@
 <script>
 
 
+
 import {postRequest} from "@/utils/request";
 
 export default {
@@ -75,7 +76,7 @@ export default {
                * 登录后则直接跳转到对应路由
                */
               let path = this.$route.query.redirect;
-              this.$router.replace(path === '/' || path === undefined ? '/homePage' : path);
+              this.$router.replace(path === '/' || path === undefined ? '/home' : path);
             }
           })
         } else {
@@ -114,5 +115,4 @@ export default {
   display: flex;
   align-items: center;
 }
-
 </style>

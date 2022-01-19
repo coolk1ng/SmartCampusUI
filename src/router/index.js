@@ -1,10 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomePage from "@/views/HomePage";
-import StudentManage from "@/components/StudentManage";
 import Login from "@/views/Login";
-import Unapproved from "@/components/Unapproved";
-import UserManage from "@/components/UserManage";
+import Home from "@/views/Home";
 
 
 Vue.use(VueRouter)
@@ -13,27 +10,60 @@ const routes = [
     {
         path: '/',
         name: 'Login',
-        component: Login
+        component: Login,
     },
     {
-        path: '/homePage',
-        name: 'HomePage',
-        component: HomePage,
+        path: '/home',
+        name: 'Home',
+        component: Home,
         children:[
             {
-                path: '/userManage',
-                name: 'UserManage',
-                component: UserManage
+                path: '/personal',
+                name: 'PersonalInfo',
+                meta: {title: '个人信息'},
+                component: () => import('../components/user/PersonalInfo')
             },
             {
-                path: '/studentManage',
+                path: '/apply',
+                name: 'ApplyInfo',
+                meta: {title: '我的申请'},
+                component: () => import('../components/user/ApplyInfo')
+            },
+            {
+                path: '/applyRecord',
+                name: 'ApplyRecord',
+                meta: {title: '申请记录'},
+                component: () => import('../components/user/ApplyRecord')
+            },
+            {
+                path: '/epidemicInfo',
+                name: 'EpidemicInfo',
+                meta: {title: '防疫知识'},
+                component: () => import('../components/user/EpidemicInfo')
+            },
+            {
+                path: '/riskArea',
+                name: 'RiskArea',
+                meta: {title: '风险地区'},
+                component: () => import('../components/user/RiskArea')
+            },
+            {
+                path: '/student',
                 name: 'StudentManage',
-                component: StudentManage
+                meta: {title: '学生管理'},
+                component: () => import('../components/manage/StudentManage')
             },
             {
-                path: '/unapproved',
-                name: 'Unapproved',
-                component: Unapproved
+                path: '/approval',
+                name: 'ApprovalManage',
+                meta: {title: '审批管理'},
+                component: () => import('../components/manage/ApprovalManage')
+            },
+            {
+                path: '/approvalRecord',
+                name: 'ApprovalRecord',
+                meta: {title: '审批记录'},
+                component: () => import('../components/manage/ApprovalRecord')
             }
         ]
     },
