@@ -49,7 +49,7 @@
             width="135">
         </el-table-column>
         <el-table-column
-            prop="class"
+            prop="className"
             label="班级"
             width="120">
         </el-table-column>
@@ -99,7 +99,7 @@ export default {
           id: '',
           name: '张三',
           sex: '男',
-          class: '计科1801',
+          className: '计科1801',
           college: '电信学院',
           telephone: '18156418655',
           updateTime: '2022-01-20'
@@ -108,7 +108,7 @@ export default {
           id: '',
           name: '张三',
           sex: '男',
-          class: '计科1801',
+          className: '计科1801',
           college: '电信学院',
           telephone: '18156418655',
           updateTime: '2022-01-20'
@@ -116,7 +116,7 @@ export default {
       ],
       student:{
         name: '',
-        class: '',
+        className: '',
         college: '',
         sex: ''
       }

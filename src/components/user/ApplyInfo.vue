@@ -5,7 +5,7 @@
         <el-input size="mini" v-model="applyInfo.name"></el-input>
       </el-form-item>
       <el-form-item label="班级">
-        <el-input v-model="applyInfo.class" size="mini"></el-input>
+        <el-input v-model="applyInfo.className" size="mini"></el-input>
       </el-form-item>
     <el-form-item label="学院">
       <el-input v-model="applyInfo.college" size="mini"></el-input>
@@ -60,7 +60,7 @@ export default {
       applyInfo: {
         id: '',
         name: '', //姓名
-        class: '', //班级
+        className: '', //班级
         college: '', //学院
         applyReason: '', //申请原因
         leaveTime: '', //离校时间
