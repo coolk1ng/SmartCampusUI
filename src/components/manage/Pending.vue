@@ -3,13 +3,13 @@
   <div class="search-div">
     <el-form :inline="true"  class="demo-form-inline">
       <el-form-item>
-        <el-input v-model="applyRecord.name" size="small" clearable placeholder="姓名"></el-input>
+        <el-input v-model="pending.name" size="small" clearable placeholder="姓名"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input v-model="applyRecord.applyReason" size="small" clearable placeholder="离校时间"></el-input>
+        <el-input v-model="pending.leaveTime" size="small" clearable placeholder="离校时间"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input v-model="applyRecord.applyTime" size="small" clearable placeholder="返校时间"></el-input>
+        <el-input v-model="pending.returnTime" size="small" clearable placeholder="返校时间"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="small">查询</el-button>
@@ -21,7 +21,7 @@
       <el-table
           :header-cell-style="{textAlign: 'center'}"
           :cell-style="{ textAlign: 'center' }"
-          :data="applyRecordList"
+          :data="pendingList"
           stripe
           style="width: 100%">
         <el-table-column
@@ -34,13 +34,13 @@
             width="220">
         </el-table-column>
         <el-table-column
-            prop="applyReason"
-            label="申请原因"
+            prop="leaveTime"
+            label="离校时间"
             width="220">
         </el-table-column>
         <el-table-column
-            prop="applyTime"
-            label="申请时间"
+            prop="returnTime"
+            label="返校时间"
             width="220">
         </el-table-column>
         <el-table-column
@@ -52,7 +52,10 @@
                          width="260">
           <template slot-scope="scope">
             <el-button
-                size="mini" type="success">查看
+                size="mini" type="success">批准
+            </el-button>
+            <el-button
+                size="mini" type="danger">驳回
             </el-button>
           </template>
         </el-table-column>
@@ -64,30 +67,29 @@
 
 <script>
 export default {
-  name: "ApplyRecord",
+  name: "Pending",
   data(){
     return{
-      applyRecordList: [
+      pendingList: [
         {
           id: '',
           name: '张三',
-          applyReason: '放假回家',
-          applyTime: '2022-02-01',
-          days: '3'
+          leaveTime: '2022-01-20',
+          returnTime: '2022-01-21',
+          days: '2'
         },
         {
           id: '',
           name: '张三',
-          applyReason: '放假回家',
-          applyTime: '2022-02-01',
-          days: '3'
+          leaveTime: '2022-01-20',
+          returnTime: '2022-01-21',
+          days: '2'
         }
       ],
-      applyRecord: {
-        id: '',
+      pending: {
         name: '',
-        applyReason: '',
-        applyTime: ''
+        leaveTime: '',
+        returnTime: ''
       }
     }
   }

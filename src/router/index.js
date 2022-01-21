@@ -26,7 +26,7 @@ const routes = [
             {
                 path: '/apply',
                 name: 'ApplyInfo',
-                meta: {title: '我的申请'},
+                meta: {title: '我要申请'},
                 component: () => import('../components/user/ApplyInfo')
             },
             {
@@ -34,6 +34,18 @@ const routes = [
                 name: 'ApplyRecord',
                 meta: {title: '申请记录'},
                 component: () => import('../components/user/ApplyRecord')
+            },
+            {
+                path: '/approvalRecord',
+                name: 'ApprovalRecord',
+                meta: {title: '审批记录'},
+                component: () => import('../components/manage/ApprovalRecord')
+            },
+            {
+                path: '/pending',
+                name: 'Pending',
+                meta: {title: '待审批'},
+                component: () => import('../components/manage/Pending')
             },
             {
                 path: '/epidemicInfo',
@@ -53,18 +65,6 @@ const routes = [
                 meta: {title: '学生管理'},
                 component: () => import('../components/manage/StudentManage')
             },
-            {
-                path: '/approval',
-                name: 'ApprovalManage',
-                meta: {title: '审批管理'},
-                component: () => import('../components/manage/ApprovalManage')
-            },
-            {
-                path: '/approvalRecord',
-                name: 'ApprovalRecord',
-                meta: {title: '审批记录'},
-                component: () => import('../components/manage/ApprovalRecord')
-            }
         ]
     },
 ]
