@@ -6,10 +6,20 @@
         <el-input v-model="pending.name" size="small" clearable placeholder="姓名"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input v-model="pending.leaveTime" size="small" clearable placeholder="离校时间"></el-input>
+        <el-date-picker
+            size="mini"
+            v-model="pending.leaveTime"
+            type="date"
+            placeholder="离校日期">
+        </el-date-picker>
       </el-form-item>
       <el-form-item>
-        <el-input v-model="pending.returnTime" size="small" clearable placeholder="返校时间"></el-input>
+        <el-date-picker
+            size="mini"
+            v-model="pending.returnTime"
+            type="date"
+            placeholder="返校日期">
+        </el-date-picker>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="small">查询</el-button>
