@@ -1,7 +1,6 @@
 import axios from "axios";
 import {Message} from "element-ui";
 import router from "@/router";
-import qs from "qs";
 
 /**
  * 请求拦截器
@@ -64,9 +63,6 @@ export const postRequest = (url, params) => {
         url: `${base}${url}`,
         params: params,
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        paramsSerializer: params => {
-            return qs.stringify(params, {indices: false})
-        }
     });
 }
 
