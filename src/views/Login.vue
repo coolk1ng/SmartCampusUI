@@ -4,7 +4,7 @@
              ref="form"
              :model="loginForm"
              class="formStyle">
-      <h2 class="loginTitle">系统登录</h2>
+      <h3 class="loginTitle">系统登录</h3>
       <el-form-item prop="username">
         <el-input type="text" v-model="loginForm.username" placeholder="请输入用户名"></el-input>
       </el-form-item>
@@ -98,12 +98,12 @@ export default {
   border-radius: 20px;
   background-clip: padding-box;
   /*margin: 180px auto;*/
-  width: 350px;
+  width: 300px;
   padding: 15px 35px 15px 35px;
   background: #f1f8fa;
   border: 1px solid #9d9696;
   box-shadow: 0 0 20px #cac6c6;
-  height: 340px;
+  height: 320px;
 }
 
 .loginTitle {
@@ -122,6 +122,7 @@ export default {
 }
 .login-div{
   height: 100%;
-  background: url("../assets/logo.png");
+  background: url("../assets/2.jpeg");
+  background-size: cover;
 }
 </style>

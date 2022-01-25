@@ -65,6 +65,12 @@ const routes = [
                 meta: {title: '学生管理'},
                 component: () => import('../components/manage/StudentManage')
             },
+            {
+                path: '/health',
+                name: 'HealthSituation',
+                meta: {title: '简况状况'},
+                component: () => import('../components/user/HealthSituation')
+            },
         ]
     },
 ]
