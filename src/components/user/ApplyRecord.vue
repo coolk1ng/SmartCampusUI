@@ -57,6 +57,7 @@
               width="180">
             <template slot-scope="scope">
               <el-switch
+                  disabled
                   v-model="scope.row.applyState"
                   active-color="#13ce66"
                   inactive-color="#ff4949">
