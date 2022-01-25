@@ -56,9 +56,11 @@
               label="是否审批"
               width="180">
             <template slot-scope="scope">
-              <el-tag
-                  :type="scope.row.tag === '待审批' ? 'danger' : 'success'"
-                  disable-transitions>{{scope.row.appliState}}</el-tag>
+              <el-switch
+                  v-model="scope.row.applyState"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949">
+              </el-switch>
             </template>
           </el-table-column>
           <el-table-column label="操作"
