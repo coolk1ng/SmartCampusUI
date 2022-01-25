@@ -2,11 +2,11 @@
   <div>
     <div class="search-div">
       <el-form :inline="true" class="demo-form-inline" :model="recordForm">
-        <el-form-item>
-          <el-input v-model="recordForm.name" size="small" clearable placeholder="姓名"></el-input>
+        <el-form-item label="姓名">
+          <el-input v-model="recordForm.name" size="small" clearable></el-input>
         </el-form-item>
-        <el-form-item>
-          <el-select v-model="recordForm.approvalResult" size="small" placeholder="审批结果">
+        <el-form-item label="审批结果">
+          <el-select v-model="recordForm.approvalResult" size="small">
             <el-option label="批准" value="1"></el-option>
             <el-option label="驳回" value="2"></el-option>
           </el-select>

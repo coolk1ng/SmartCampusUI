@@ -27,9 +27,10 @@ axios.interceptors.response.use(success => {
             return;
         }
         //操作成功时的提示信息
-        if (success.data.message) {
+        /*if (success.data.message) {
+            console.log(success);
             Message.success({message: success.data.message});
-        }
+        }*/
     }
     return success.data;
 }, error => {

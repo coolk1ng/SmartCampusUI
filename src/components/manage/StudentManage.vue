@@ -2,14 +2,14 @@
 <div>
   <div class="search-div">
     <el-form :inline="true"  class="demo-form-inline" :model="searchParam">
-      <el-form-item>
-        <el-input v-model="searchParam.name" size="small" clearable placeholder="姓名"></el-input>
+      <el-form-item label="姓名">
+        <el-input v-model="searchParam.name" size="small" clearable></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-input v-model="searchParam.sex" size="small" clearable placeholder="性别"></el-input>
+      <el-form-item label="性别">
+        <el-input v-model="searchParam.sex" size="small" clearable></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-input v-model="searchParam.class" size="small" clearable placeholder="班级"></el-input>
+      <el-form-item label="班级">
+        <el-input v-model="searchParam.class" size="small" clearable></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="small" @click="initList">查询</el-button>
