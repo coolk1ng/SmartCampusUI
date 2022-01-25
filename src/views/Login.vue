@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login-div">
     <el-form :rules="rules"
              ref="form"
              :model="loginForm"
@@ -91,14 +91,19 @@ export default {
 
 <style>
 .formStyle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-175px) translateY(-170px);
   border-radius: 20px;
   background-clip: padding-box;
-  margin: 180px auto;
+  /*margin: 180px auto;*/
   width: 350px;
   padding: 15px 35px 15px 35px;
   background: #f1f8fa;
   border: 1px solid #9d9696;
   box-shadow: 0 0 20px #cac6c6;
+  height: 340px;
 }
 
 .loginTitle {
@@ -114,5 +119,9 @@ export default {
 .el-form-item__content {
   display: flex;
   align-items: center;
+}
+.login-div{
+  height: 100%;
+  background: url("../assets/logo.png");
 }
 </style>

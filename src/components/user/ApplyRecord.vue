@@ -5,14 +5,14 @@
       <el-form-item>
         <el-input v-model="applyRecord.name" size="small" clearable placeholder="姓名"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-input v-model="applyRecord.applyReason" size="small" clearable placeholder="离校时间"></el-input>
+      <el-form-item label="是否审批">
+        <el-input v-model="applyRecord.applyState" size="small"></el-input>
+      </el-form-item>
+      <el-form-item label="申请时间">
+        <el-date-picker v-model="applyRecord.applyTime" type="date" size="small"></el-date-picker>
       </el-form-item>
       <el-form-item>
-        <el-input v-model="applyRecord.applyTime" size="small" clearable placeholder="返校时间"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" size="small">查询</el-button>
+        <el-button type="primary" size="small" @click="initApplyRecordList">查询</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -45,50 +45,99 @@
         </el-table-column>
         <el-table-column
             prop="days"
-            label="天数"
+            label="申请天数"
             width="220">
+        </el-table-column>
+        <el-table-column
+            prop="days"
+            label="是否审批"
+            width="220">
+            <template slot-scope="scope">
+              <el-switch
+                  v-model="scope.row.applyState"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949">
+              </el-switch>
+            </template>
         </el-table-column>
         <el-table-column label="操作"
                          width="260">
           <template slot-scope="scope">
             <el-button
-                size="mini" type="success">查看
+                size="mini" type="success" @click="getDetail(scope.row)">查看
             </el-button>
           </template>
         </el-table-column>
       </el-table>
     </template>
   </div>
+  <!--    弹出框-->
+  <el-dialog
+      title="申请"
+      :visible.sync="dialogVisible"
+      width="50%">
+    <el-form ref="form" :model="applyRecord" size="mini">
+      <el-row>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="申请人:">
+            <el-input size="mini" v-model="applyRecord.name" disabled></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="9" :offset="2">
+          <el-switch
+              v-model="applyRecord.state"
+              active-text="已审批"
+              inactive-text="未审批">
+          </el-switch>
+        </el-col>
+        <el-col :span="20" :offset="2">
+          <el-form-item label="原因:">
+            <el-input type="textarea" v-model="applyRecord.approvalReason"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+    </el-form>
+  </el-dialog>
 </div>
 </template>
 
 <script>
+import {postRequest} from "../../utils/request";
+
 export default {
   name: "ApplyRecord",
+  mounted() {
+    this.initApplyRecordList();
+  },
   data(){
     return{
       applyRecordList: [
-        {
-          id: '',
-          name: '张三',
-          applyReason: '放假回家',
-          applyTime: '2022-02-01',
-          days: '3'
-        },
-        {
-          id: '',
-          name: '张三',
-          applyReason: '放假回家',
-          applyTime: '2022-02-01',
-          days: '3'
-        }
       ],
       applyRecord: {
         id: '',
         name: '',
         applyReason: '',
-        applyTime: ''
-      }
+        applyTime: '',
+        applyState: ''
+      },
+      dialogVisible: false
+    }
+  },
+  methods:{
+    initApplyRecordList(){
+      postRequest('/applyInfo/getApplyRecordList',this.applyRecord).then(res=>{
+        if (res){
+          this.applyRecordList = res.data.list;
+        }
+      })
+    },
+    getDetail(applyRecord){
+      this.dialogVisible = true;
+      postRequest('/applyInfo/getApplyRecordDetail',applyRecord).then(res=>{
+        if(res){
+          this.applyRecord = res.data;
+        }
+      })
     }
   }
 }

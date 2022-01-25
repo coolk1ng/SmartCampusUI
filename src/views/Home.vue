@@ -63,4 +63,5 @@ export default {
   height: 100vh;
   background-color: #3a566b;
 }
+
 </style>

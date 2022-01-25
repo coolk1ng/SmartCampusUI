@@ -5,14 +5,14 @@
       <el-form-item label="姓名">
         <el-input v-model="searchParam.name" size="small" clearable></el-input>
       </el-form-item>
-      <el-form-item label="性别">
+      <el-form-item label="性别" style="margin-left: 20px">
         <el-input v-model="searchParam.sex" size="small" clearable></el-input>
       </el-form-item>
-      <el-form-item label="班级">
+      <el-form-item label="班级" style="margin-left: 20px">
         <el-input v-model="searchParam.class" size="small" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" size="small" @click="initList">查询</el-button>
+        <el-button type="primary" size="small" @click="initList" style="margin-left: 20px">查询</el-button>
       </el-form-item>
       <el-form-item>
         <el-button type="success" size="small" @click="showAddPage">添加</el-button>
