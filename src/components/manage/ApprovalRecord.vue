@@ -66,48 +66,60 @@
           </el-table-column>
         </el-table>
       </template>
+      <div style="float: right">
+        <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="pageParam.pageNum"
+            :page-size="pageParam.pageSize"
+            :total="pageParam.total"
+            background
+            layout="total,prev, pager, next">
+        </el-pagination>
     </div>
-    <!--    弹出框-->
-    <el-dialog
-        title="审批管理"
-        :visible.sync="dialogVisible"
-        width="50%">
-      <el-form ref="form" :model="record" size="mini" :disabled="disabled">
-        <el-row>
-          <el-col :span="9" :offset="2">
-            <el-form-item label="姓名:">
-              <el-input v-model="record.name"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="9" :offset="2">
-            <el-form-item label="审批人:">
-              <el-input v-model="record.approvalPerson" disabled></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="9" :offset="2">
-            <el-form-item label="审批结果:">
-              <el-input v-model="record.approvalResult"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="9" :offset="2">
-            <el-form-item label="审批时间:">
-              <el-date-picker type="date" placeholder="选择日期" v-model="record.approvalTime" style="width: 100%;"></el-date-picker>
-            </el-form-item>
-          </el-col>
-          <el-col :span="20" :offset="2">
-            <el-form-item label="审批时间:">
-              <el-input type="textarea" v-model="record.approvalReason"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="10" :offset="8">
-            <div v-if="hasButton">
-              <el-button @click="dialogVisible = false">取 消</el-button>
-              <el-button type="primary" @click="editRecord">确 定</el-button>
-            </div>
-          </el-col>
-        </el-row>
-      </el-form>
-    </el-dialog>
+  </div>
+  <!--    弹出框-->
+  <el-dialog
+      title="审批管理"
+      :visible.sync="dialogVisible"
+      width="50%">
+    <el-form ref="form" :model="record" size="mini" :disabled="disabled">
+      <el-row>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="姓名:">
+            <el-input v-model="record.name"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="审批人:">
+            <el-input v-model="record.approvalPerson" disabled></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="审批结果:">
+            <el-input v-model="record.approvalResult"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="审批时间:">
+            <el-date-picker type="date" placeholder="选择日期" v-model="record.approvalTime"
+                            style="width: 100%;"></el-date-picker>
+          </el-form-item>
+        </el-col>
+        <el-col :span="20" :offset="2">
+          <el-form-item label="审批时间:">
+            <el-input type="textarea" v-model="record.approvalReason"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="10" :offset="8">
+          <div v-if="hasButton">
+            <el-button @click="dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="editRecord">确 定</el-button>
+          </div>
+        </el-col>
+      </el-row>
+    </el-form>
+  </el-dialog>
   </div>
 </template>
 
@@ -125,11 +137,16 @@ export default {
       recordForm: {
         name: '',
         approvalResult: '',
-        pageNum: '',
-        pageSize: ''
+      },
+      pageParam: {
+        pageNum: 1,
+        pageSize: 10,
+        total: 0
       },
       record: {
+        id: '',
         userId: '',
+        applyNo: '',
         name: '',
         approvalPerson: '',
         approvalResult: '',
@@ -143,13 +160,23 @@ export default {
     }
   },
   methods: {
+    handleSizeChange(val) {
+      this.pageParam.pageSize = val;
+      this.initList();
+    },
+    handleCurrentChange(val) {
+      this.pageParam.pageNum = val;
+      this.initList();
+    },
     /**
      * 初始化列表
      */
     initList() {
-      postRequest('/approvalRecord/getApprovalRecordList', this.recordForm).then(res => {
+      const params = Object.assign(this.recordForm, this.pageParam)
+      postRequest('/approvalRecord/getApprovalRecordList', params).then(res => {
         if (res) {
           this.recordList = res.data.list;
+          this.pageParam.total = res.data.total;
         }
       })
     },
@@ -174,10 +201,10 @@ export default {
      * 显示dialog
      */
     showEditPage(record) {
-      this.disabled =false;
+      this.disabled = false;
       this.hasButton = true;
       //拷贝
-      Object.assign(this.record,record);
+      Object.assign(this.record, record);
       this.dialogVisible = true;
     },
     /**
@@ -185,10 +212,10 @@ export default {
      */
     editRecord() {
       postRequest('/approvalRecord/editApprovalRecord', this.record).then(res => {
-          if (res){
-            this.initList();
-            this.dialogVisible = false;
-          }
+        if (res) {
+          this.initList();
+          this.dialogVisible = false;
+        }
       })
     }
   }

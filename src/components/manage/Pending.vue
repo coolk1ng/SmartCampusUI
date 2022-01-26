@@ -124,6 +124,8 @@ export default {
         pageSize: ''
       },
       updatePending:{
+        id: '',
+        applyNo: '',
         userId: '',
         name: '',
         state: true,
