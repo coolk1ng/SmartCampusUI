@@ -257,6 +257,7 @@ export default {
      * 显示添加框
      */
     showAddPage(){
+      this.student ={};
       this.hasButton = true;
       this.dialogVisible = true;
       this.disabled = false;
