@@ -7,6 +7,7 @@
       </el-form-item>
       <el-form-item label="离校日期">
         <el-date-picker
+            value-format="yyyy-MM-dd"
             size="small"
             v-model="pending.leaveTime"
             type="date">
@@ -14,6 +15,7 @@
       </el-form-item>
       <el-form-item label="返校日期">
         <el-date-picker
+            value-format="yyyy-MM-dd"
             size="small"
             v-model="pending.returnTime"
             type="date">

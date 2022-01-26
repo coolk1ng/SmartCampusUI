@@ -86,6 +86,13 @@
         </el-table-column>
       </el-table>
     </template>
+    <div style="float: right">
+        <el-pagination
+            background
+            layout="prev, pager, next"
+            :total="1000">
+        </el-pagination>
+    </div>
   </div>
   <!--    弹出框-->
   <el-dialog
@@ -104,6 +111,8 @@
             <el-input v-model="student.sex"></el-input>
           </el-form-item>
         </el-col>
+      </el-row>
+      <el-row>
         <el-col :span="9" :offset="2">
           <el-form-item label="班级:">
             <el-input v-model="student.className"></el-input>
@@ -114,6 +123,8 @@
             <el-input v-model="student.college"></el-input>
           </el-form-item>
         </el-col>
+        </el-row>
+      <el-row>
         <el-col :span="9" :offset="2">
           <el-form-item label="任职情况:">
             <el-input v-model="student.cognition"></el-input>
@@ -124,6 +135,8 @@
             <el-input v-model="student.studentId"></el-input>
           </el-form-item>
         </el-col>
+        </el-row>
+      <el-row>
         <el-col :span="9" :offset="2">
           <el-form-item label="身份证号:">
             <el-input v-model="student.idCardNum"></el-input>
@@ -134,6 +147,8 @@
             <el-input v-model="student.telephone"></el-input>
           </el-form-item>
         </el-col>
+        </el-row>
+      <el-row>
         <el-col :span="9" :offset="2">
           <el-form-item label="户籍地:">
             <el-input v-model="student.domicile"></el-input>
@@ -144,6 +159,8 @@
             <el-date-picker type="date" placeholder="选择日期" v-model="student.birthTime" style="width: 100%;"></el-date-picker>
           </el-form-item>
         </el-col>
+        </el-row>
+      <el-row>
         <el-col :span="9" :offset="2">
           <el-form-item label="父亲联系方式:">
             <el-input v-model="student.fatherTel"></el-input>
@@ -154,6 +171,8 @@
             <el-input v-model="student.motherTel"></el-input>
           </el-form-item>
         </el-col>
+        </el-row>
+      <el-row>
         <el-col :span="9" :offset="2">
           <el-form-item label="政治面貌:">
             <el-input v-model="student.politicalStatus"></el-input>
@@ -164,7 +183,9 @@
             <el-input v-model="student.age"></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="10" :offset="8">
+        </el-row>
+      <el-row>
+        <el-col :span="10" :offset="9">
           <div v-if="hasButton">
             <el-button @click="dialogVisible = false">取 消</el-button>
             <el-button type="primary" @click="editStudent">确 定</el-button>
