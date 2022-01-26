@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="student-div">
     <div class="search-div">
       <el-form :inline="true" class="demo-form-inline" :model="searchParam">
         <el-form-item label="姓名">
@@ -70,7 +70,7 @@
               width="150">
           </el-table-column>
           <el-table-column label="操作"
-                           width="300">
+                           width="290">
             <template slot-scope="scope">
               <el-button
                   size="mini" type="primary" @click="getDetail(scope.row)">详情
@@ -204,6 +204,7 @@
 
 <script>
 import {postRequest} from "@/utils/request";
+import {Message} from "element-ui";
 
 export default {
   name: "StudentManage",
@@ -317,8 +318,11 @@ export default {
      */
     editStudent() {
       postRequest('/userInfo/addAndEditStudent', this.student).then(res => {
-        this.dialogVisible = false;
-        this.initList();
+        if (res){
+          this.dialogVisible = false;
+          this.initList();
+          Message.success({message: "编辑成功"});
+        }
       })
     },
 

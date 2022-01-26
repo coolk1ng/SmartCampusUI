@@ -74,7 +74,7 @@
             :page-size="pageParam.pageSize"
             :total="pageParam.total"
             background
-            layout="total,prev, pager, next">
+            layout="total, prev, pager, next">
         </el-pagination>
     </div>
   </div>
@@ -107,7 +107,7 @@
           </el-form-item>
         </el-col>
         <el-col :span="20" :offset="2">
-          <el-form-item label="审批时间:">
+          <el-form-item label="审批原因:">
             <el-input type="textarea" v-model="record.approvalReason"></el-input>
           </el-form-item>
         </el-col>
@@ -125,6 +125,7 @@
 
 <script>
 import {postRequest} from "@/utils/request";
+import {Message} from "element-ui";
 
 export default {
   name: "ApprovalRecord",
@@ -160,10 +161,18 @@ export default {
     }
   },
   methods: {
+    /**
+     * 分页数量改变
+     * @param val
+     */
     handleSizeChange(val) {
       this.pageParam.pageSize = val;
       this.initList();
     },
+    /**
+     * 分页页数改变
+     * @param val
+     */
     handleCurrentChange(val) {
       this.pageParam.pageNum = val;
       this.initList();
@@ -213,8 +222,9 @@ export default {
     editRecord() {
       postRequest('/approvalRecord/editApprovalRecord', this.record).then(res => {
         if (res) {
-          this.initList();
           this.dialogVisible = false;
+          this.initList();
+          Message.success({message: "编辑成功"});
         }
       })
     }

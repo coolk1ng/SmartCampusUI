@@ -1,6 +1,6 @@
 <template>
 <div class="form-div">
-  <el-form :label-position="left" label-width="150px" :model="applyInfo">
+  <el-form  label-width="150px" :model="applyInfo">
       <el-form-item label="姓名">
         <el-input size="mini" v-model="applyInfo.name"></el-input>
       </el-form-item>

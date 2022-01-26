@@ -5,14 +5,15 @@
         <el-form-item label="姓名">
           <el-input v-model="applyParam.name" size="small" clearable></el-input>
         </el-form-item>
-        <el-form-item label="审批结果">
+        <el-form-item label="审批结果" style="margin-left: 20px">
           <el-select v-model="applyParam.applyState" size="small">
             <el-option label="待审批" value="1"></el-option>
             <el-option label="已审批" value="0"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="申请时间">
-          <el-date-picker v-model="applyParam.applyTime" value-format="yyyy-MM-dd" type="date" size="small"></el-date-picker>
+        <el-form-item label="申请时间" style="margin-left: 20px">
+          <el-date-picker v-model="applyParam.applyTime" value-format="yyyy-MM-dd" type="date"
+                          size="small"></el-date-picker>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" size="small" @click="initApplyRecordList">查询</el-button>
@@ -74,6 +75,17 @@
           </el-table-column>
         </el-table>
       </template>
+      <div style="float: right">
+        <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="pageParam.pageNum"
+            :page-size="pageParam.pageSize"
+            :total="pageParam.total"
+            background
+            layout="total,prev, pager, next">
+        </el-pagination>
+      </div>
     </div>
     <!--    弹出框-->
     <el-dialog
@@ -186,14 +198,37 @@ export default {
         applyState: '',
         applyTime: ''
       },
-      dialogVisible: false
+      dialogVisible: false,
+      pageParam: {
+        pageNum: 1,
+        pageSize: 10,
+        total: 0
+      }
     }
   },
   methods: {
+    /**
+     * 分页数量改变
+     * @param val
+     */
+    handleSizeChange(val) {
+      this.pageParam.pageSize = val;
+      this.initApplyRecordList();
+    },
+    /**
+     * 分页页数改变
+     * @param val
+     */
+    handleCurrentChange(val) {
+      this.pageParam.pageNum = val;
+      this.initApplyRecordList();
+    },
     initApplyRecordList() {
-      postRequest('/applyInfo/getApplyRecordList', this.applyParam).then(res => {
+      const params = Object.assign(this.applyParam, this.pageParam);
+      postRequest('/applyInfo/getApplyRecordList', params).then(res => {
         if (res) {
           this.applyRecordList = res.data.list;
+          this.pageParam.total = res.data.total;
         }
       })
     },

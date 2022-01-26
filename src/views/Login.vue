@@ -25,8 +25,8 @@
 <script>
 
 
-
 import {postRequest} from "@/utils/request";
+import {Message} from "element-ui";
 
 export default {
   name: "Login",
@@ -65,8 +65,8 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           postRequest('/login', this.loginForm).then(resp => {
-            if (resp) {
-            //alert(JSON.stringify(resp));
+            if (resp.data) {
+              //alert(JSON.stringify(resp));
               //存储用户token
               const tokenStr = resp.data.tokenHead + resp.data.token;
               window.sessionStorage.setItem('tokenStr', tokenStr);
@@ -76,7 +76,10 @@ export default {
                * 登录后则直接跳转到对应路由
                */
               let path = this.$route.query.redirect;
-              this.$router.replace(path === '/' || path === undefined ? '/home' : path);
+              this.$router.replace(path === '/' || path === undefined ? '/student' : path);
+              Message.success({message: resp.message});
+            }else{
+              Message.error({message: resp.message});
             }
           })
         } else {
@@ -120,7 +123,8 @@ export default {
   display: flex;
   align-items: center;
 }
-.login-div{
+
+.login-div {
   height: 100%;
   background: url("../assets/2.jpeg");
   background-size: cover;
