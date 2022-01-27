@@ -13,11 +13,11 @@
           <el-menu router style="background-color: #3a566b">
             <el-menu-item :index="item.path" v-for="(item,index) in menus" :key="index">
               <i :class="item.icon"></i>
-              <span slot="title">{{ item.name }}</span>
+              <span slot="title" class="menuTitle">{{ item.name }}</span>
             </el-menu-item>
           </el-menu>
         </el-aside>
-        <el-main>
+        <el-main class="main-div">
           <router-view/>
         </el-main>
       </el-container>
@@ -84,5 +84,9 @@ export default {
   margin-right: 20px;
   font-size: 1px;
   color: #1a1818;
+}
+.menuTitle{
+  font-weight: bold;
+  color: #4becec;
 }
 </style>

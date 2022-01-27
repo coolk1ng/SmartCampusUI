@@ -18,6 +18,12 @@ const routes = [
         component: Home,
         children:[
             {
+              path: '/firstPicture',
+              name: 'FirstPicture',
+              meta: {title: '首图'},
+              component: () => import('../components/FirstPicture')
+            },
+            {
                 path: '/personal',
                 name: 'PersonalInfo',
                 meta: {title: '个人信息'},

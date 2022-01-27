@@ -76,7 +76,7 @@ export default {
                * 登录后则直接跳转到对应路由
                */
               let path = this.$route.query.redirect;
-              this.$router.replace(path === '/' || path === undefined ? '/student' : path);
+              this.$router.replace(path === '/' || path === undefined ? '/firstPicture' : path);
               Message.success({message: resp.message});
             }else{
               Message.error({message: resp.message});
