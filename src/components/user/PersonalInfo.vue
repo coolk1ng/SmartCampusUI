@@ -23,7 +23,7 @@
           <i class="fa fa-eye"></i>
           密码
         </template>
-        {{personalInfo.password}}
+        {{personalInfo.password!='' ? '********': ''}}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">

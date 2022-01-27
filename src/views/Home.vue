@@ -4,7 +4,7 @@
       <el-header class="homeHeader">
         <div class="title">疫情期间进出校园管理系统</div>
         <div>
-          <el-link class="userInfo" type="info">用户: {{userInfo.name}}</el-link>
+          <el-link class="userInfo" type="info">用户: {{userInfo.username}}</el-link>
           <el-link class="userInfo" type="info" v-if="userInfo.studentId!=null">学号: {{userInfo.studentId}}</el-link>
         </div>
       </el-header>

@@ -42,17 +42,19 @@
       </el-col>
       <el-col class="line" :span="2">-</el-col>
       <el-col :span="11">
-        <el-time-picker placeholder="返校时间" v-model="applyInfo.returnTime" style="width: 100%;" size="mini"></el-time-picker>
+        <el-date-picker type="date" placeholder="返校时间" v-model="applyInfo.returnTime" style="width: 100%;" size="mini"></el-date-picker>
       </el-col>
     </el-form-item>
     <el-form-item>
-      <el-button size="mini" type="success">立即申请</el-button>
+      <el-button size="mini" type="success" @click="doApplication" style="margin-left: 100px">立即申请</el-button>
     </el-form-item>
   </el-form>
 </div>
 </template>
 
 <script>
+import {postRequest} from "../../utils/request";
+
 export default {
   name: "ApplyInfo",
   data(){
@@ -63,6 +65,7 @@ export default {
         className: '', //班级
         college: '', //学院
         applyReason: '', //申请原因
+        applyTime: '', //申请时间
         leaveTime: '', //离校时间
         returnTime: '', //返校时间
         days: '', //天数
@@ -72,6 +75,15 @@ export default {
         trafficNum: '', //交通工具班次
         telephone: '' //联系方式
       }
+    }
+  },
+  methods: {
+    doApplication(){
+      postRequest('/applyInfo/doApplication',this.applyInfo).then(res=>{
+        if (res){
+          this.$message.success('申请成功');
+        }
+      })
     }
   }
 }
