@@ -25,36 +25,29 @@
             stripe
             style="width: 100%">
           <el-table-column
-              type="index"
-              width="40">
+              type="index">
           </el-table-column>
           <el-table-column
               prop="name"
-              label="姓名"
-              width="190">
+              label="姓名">
           </el-table-column>
           <el-table-column
               prop="approvalPerson"
-              label="审批人"
-              width="190">
+              label="审批人">
           </el-table-column>
           <el-table-column
               prop="approvalResult"
-              label="审批结果"
-              width="190">
+              label="审批结果">
           </el-table-column>
           <el-table-column
               prop="approvalReason"
-              label="审批原因"
-              width="190">
+              label="审批原因">
           </el-table-column>
           <el-table-column
               prop="approvalTime"
-              label="审批时间"
-              width="190">
+              label="审批时间">
           </el-table-column>
-          <el-table-column label="操作"
-                           width="190">
+          <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button
                   size="mini" type="primary" @click="getDetail(scope.row)">详情
@@ -76,50 +69,50 @@
             background
             layout="total, prev, pager, next">
         </el-pagination>
+      </div>
     </div>
-  </div>
-  <!--    弹出框-->
-  <el-dialog
-      title="审批管理"
-      :visible.sync="dialogVisible"
-      width="50%">
-    <el-form ref="form" :model="record" size="mini" :disabled="disabled">
-      <el-row>
-        <el-col :span="9" :offset="2">
-          <el-form-item label="姓名:">
-            <el-input v-model="record.name"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="9" :offset="2">
-          <el-form-item label="审批人:">
-            <el-input v-model="record.approvalPerson" disabled></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="9" :offset="2">
-          <el-form-item label="审批结果:">
-            <el-input v-model="record.approvalResult"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="9" :offset="2">
-          <el-form-item label="审批时间:">
-            <el-date-picker type="date" placeholder="选择日期" v-model="record.approvalTime"
-                            style="width: 100%;"></el-date-picker>
-          </el-form-item>
-        </el-col>
-        <el-col :span="20" :offset="2">
-          <el-form-item label="审批原因:">
-            <el-input type="textarea" v-model="record.approvalReason"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="10" :offset="8">
-          <div v-if="hasButton">
-            <el-button @click="dialogVisible = false">取 消</el-button>
-            <el-button type="primary" @click="editRecord">确 定</el-button>
-          </div>
-        </el-col>
-      </el-row>
-    </el-form>
-  </el-dialog>
+    <!--    弹出框-->
+    <el-dialog
+        title="审批管理"
+        :visible.sync="dialogVisible"
+        width="50%">
+      <el-form ref="form" :model="record" size="mini" :disabled="disabled">
+        <el-row>
+          <el-col :span="9" :offset="2">
+            <el-form-item label="姓名:">
+              <el-input v-model="record.name"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="9" :offset="2">
+            <el-form-item label="审批人:">
+              <el-input v-model="record.approvalPerson" disabled></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="9" :offset="2">
+            <el-form-item label="审批结果:">
+              <el-input v-model="record.approvalResult"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="9" :offset="2">
+            <el-form-item label="审批时间:">
+              <el-date-picker type="date" placeholder="选择日期" v-model="record.approvalTime"
+                              style="width: 100%;"></el-date-picker>
+            </el-form-item>
+          </el-col>
+          <el-col :span="20" :offset="2">
+            <el-form-item label="审批原因:">
+              <el-input type="textarea" v-model="record.approvalReason"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="10" :offset="8">
+            <div v-if="hasButton">
+              <el-button @click="dialogVisible = false">取 消</el-button>
+              <el-button type="primary" @click="editRecord">确 定</el-button>
+            </div>
+          </el-col>
+        </el-row>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 

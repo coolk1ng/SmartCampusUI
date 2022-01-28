@@ -12,7 +12,7 @@
           <el-option label="红色" value="3"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="填写日期" style="margin-left: 20px">
+      <el-form-item label="填报日期" style="margin-left: 20px">
         <el-date-picker v-model="userHealthParam.createTime" value-format="yyyy-MM-dd" type="date"
                         size="small"></el-date-picker>
       </el-form-item>

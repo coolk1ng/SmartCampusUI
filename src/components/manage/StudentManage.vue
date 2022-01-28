@@ -32,45 +32,36 @@
             stripe
             style="width: 100%">
           <el-table-column
-              type="index"
-              width="40">
+              type="index">
           </el-table-column>
           <el-table-column
-              type="selection"
-              width="30">
+              type="selection">
           </el-table-column>
           <el-table-column
               prop="name"
-              label="姓名"
-              width="120">
+              label="姓名">
           </el-table-column>
           <el-table-column
               prop="sex"
-              label="性别"
-              width="135">
+              label="性别">
           </el-table-column>
           <el-table-column
               prop="className"
-              label="班级"
-              width="120">
+              label="班级">
           </el-table-column>
           <el-table-column
               prop="college"
-              label="学院"
-              width="150">
+              label="学院">
           </el-table-column>
           <el-table-column
               prop="telephone"
-              label="电话号码"
-              width="150">
+              label="电话号码">
           </el-table-column>
           <el-table-column
               prop="updateTime"
-              label="更新时间"
-              width="150">
+              label="更新时间">
           </el-table-column>
-          <el-table-column label="操作"
-                           width="290">
+          <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button
                   size="mini" type="primary" @click="getDetail(scope.row)">详情

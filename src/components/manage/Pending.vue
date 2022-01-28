@@ -35,31 +35,25 @@
             stripe
             style="width: 100%">
           <el-table-column
-              type="index"
-              width="40">
+              type="index">
           </el-table-column>
           <el-table-column
               prop="name"
-              label="姓名"
-              width="220">
+              label="姓名">
           </el-table-column>
           <el-table-column
               prop="leaveTime"
-              label="离校时间"
-              width="220">
+              label="离校时间">
           </el-table-column>
           <el-table-column
               prop="returnTime"
-              label="返校时间"
-              width="220">
+              label="返校时间">
           </el-table-column>
           <el-table-column
               prop="days"
-              label="天数"
-              width="220">
+              label="天数">
           </el-table-column>
-          <el-table-column label="操作"
-                           width="260">
+          <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button
                   size="mini" type="success" @click="showApprovalPage(scope.row)">审批

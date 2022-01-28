@@ -29,33 +29,27 @@
             stripe
             style="width: 100%">
           <el-table-column
-              type="index"
-              width="40">
+              type="index">
           </el-table-column>
           <el-table-column
               prop="name"
-              label="姓名"
-              width="180">
+              label="姓名">
           </el-table-column>
           <el-table-column
               prop="applyReason"
-              label="申请原因"
-              width="180">
+              label="申请原因">
           </el-table-column>
           <el-table-column
               prop="applyTime"
-              label="申请时间"
-              width="180">
+              label="申请时间">
           </el-table-column>
           <el-table-column
               prop="days"
-              label="申请天数"
-              width="180">
+              label="申请天数">
           </el-table-column>
           <el-table-column
               prop="days"
-              label="是否审批"
-              width="180">
+              label="是否审批">
             <template slot-scope="scope">
               <el-switch
                   disabled
@@ -65,8 +59,7 @@
               </el-switch>
             </template>
           </el-table-column>
-          <el-table-column label="操作"
-                           width="245 ">
+          <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button
                   size="mini" type="success" @click="getDetail(scope.row)">查看
