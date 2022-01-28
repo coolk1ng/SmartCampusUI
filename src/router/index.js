@@ -54,16 +54,10 @@ const routes = [
                 component: () => import('../components/manage/Pending')
             },
             {
-                path: '/epidemicInfo',
-                name: 'EpidemicInfo',
-                meta: {title: '防疫知识'},
-                component: () => import('../components/user/EpidemicInfo')
-            },
-            {
                 path: '/riskArea',
                 name: 'RiskArea',
                 meta: {title: '风险地区'},
-                component: () => import('../components/user/RiskArea')
+                component: () => import('../components/RiskArea')
             },
             {
                 path: '/student',

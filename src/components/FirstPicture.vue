@@ -11,9 +11,9 @@ export default {
 
 <style scoped>
 .home-div{
-  height: 760px;
-  width: 1490px;
-  background: url("../assets/pic.jpg");
+  background: url("../assets/5.jpeg");
+  width: 100%;
+  height: 100%;
   background-size: cover;
 }
 </style>
