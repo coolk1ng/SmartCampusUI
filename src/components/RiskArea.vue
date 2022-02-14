@@ -34,7 +34,7 @@
           </el-table-column>
           <el-table-column
               prop="riskLevel"
-              label="风险地区">
+              label="风险等级">
           </el-table-column>
           <el-table-column
               prop="remark"

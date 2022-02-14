@@ -107,11 +107,20 @@
       <el-row>
         <el-col :span="9" :offset="2">
           <el-form-item label="是否发热:">
-            <el-input size="mini" v-model="userHealth.isFever"></el-input>
+            <el-switch
+                class="switch"
+                v-model="userHealth.isFever"
+                active-value="0"
+                inactive-value="1"
+                active-text="正常"
+                inactive-text="发热"
+                active-color="#13ce66"
+                inactive-color="#ff4949">
+            </el-switch>
           </el-form-item>
         </el-col>
         <el-col :span="9" :offset="2">
-          <el-form-item label="填报时间:" va>
+          <el-form-item label="填报时间:">
             <el-input size="mini" v-model="userHealth.createTime" disabled></el-input>
           </el-form-item>
         </el-col>
@@ -119,7 +128,16 @@
       <el-row>
         <el-col :span="9" :offset="2">
           <el-form-item label="是否接触高风险人员或地区:">
-            <el-input size="mini" v-model="userHealth.isContactRisk"></el-input>
+            <el-switch
+                class="switch"
+                v-model="userHealth.isContactRisk"
+                active-value="1"
+                inactive-value="0"
+                active-text="是"
+                inactive-text="否"
+                active-color="#13ce66"
+                inactive-color="#ff4949">
+            </el-switch>
           </el-form-item>
         </el-col>
         <el-col :span="9" :offset="2">
@@ -131,12 +149,25 @@
       <el-row>
         <el-col :span="9" :offset="2">
           <el-form-item label="健康码颜色:">
-            <el-input size="mini" v-model="userHealth.healthCodeColor"></el-input>
+            <el-select v-model="userHealth.healthCodeColor" size="mini">
+              <el-option label="绿色" value="1"></el-option>
+              <el-option label="黄色" value="2"></el-option>
+              <el-option label="红色" value="3"></el-option>
+            </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="9" :offset="2">
           <el-form-item label="是否属实:">
-            <el-input size="mini" v-model="userHealth.isTrue"></el-input>
+            <el-switch
+                class="switch"
+                v-model="userHealth.isTrue"
+                active-value="1"
+                inactive-value="0"
+                active-text="属实"
+                inactive-text="不属实"
+                active-color="#13ce66"
+                inactive-color="#ff4949">
+            </el-switch>
           </el-form-item>
         </el-col>
       </el-row>
@@ -238,5 +269,7 @@ export default {
 </script>
 
 <style scoped>
-
+.switch{
+  margin-top: 4px;
+}
 </style>

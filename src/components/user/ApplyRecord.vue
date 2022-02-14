@@ -54,6 +54,22 @@
               <el-switch
                   disabled
                   v-model="scope.row.applyState"
+                  active-value="0"
+                  inactive-value="1"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949">
+              </el-switch>
+            </template>
+          </el-table-column>
+          <el-table-column
+              prop="approvalResult"
+              label="审批结果">
+            <template slot-scope="scope">
+              <el-switch
+                  disabled
+                  v-model="scope.row.applyState"
+                  active-value="0"
+                  inactive-value="1"
                   active-color="#13ce66"
                   inactive-color="#ff4949">
               </el-switch>
@@ -94,7 +110,9 @@
           </el-col>
           <el-col :span="9" :offset="2">
             <el-switch
-                v-model="applyRecord.state"
+                v-model="applyRecord.applyState"
+                active-value="0"
+                inactive-value="1"
                 active-text="已审批"
                 inactive-text="未审批">
             </el-switch>
