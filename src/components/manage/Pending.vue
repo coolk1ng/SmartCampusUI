@@ -5,22 +5,22 @@
         <el-form-item label="姓名">
           <el-input v-model="pending.name" size="small" clearable></el-input>
         </el-form-item>
-        <el-form-item label="离校日期" style="margin-left: 20px">
+        <el-form-item label="申请时间" style="margin-left: 20px">
           <el-date-picker
               value-format="yyyy-MM-dd"
               size="small"
-              v-model="pending.leaveTime"
+              v-model="pending.applyTime"
               type="date">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="返校日期" style="margin-left: 20px">
+<!--        <el-form-item label="返校日期" style="margin-left: 20px">
           <el-date-picker
               value-format="yyyy-MM-dd"
               size="small"
               v-model="pending.returnTime"
               type="date">
           </el-date-picker>
-        </el-form-item>
+        </el-form-item>-->
         <el-form-item>
           <el-button type="primary" size="small" @click="initList">查询</el-button>
         </el-form-item>
@@ -52,6 +52,14 @@
           <el-table-column
               prop="days"
               label="天数">
+          </el-table-column>
+          <el-table-column
+              prop="applyTime"
+              label="申请时间">
+          </el-table-column>
+          <el-table-column
+              prop="applyReason"
+              label="申请原因">
           </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
@@ -93,8 +101,10 @@
                 inactive-text="驳回">
             </el-switch>
           </el-col>
+        </el-row>
+        <el-row>
           <el-col :span="20" :offset="2">
-            <el-form-item label="原因:">
+            <el-form-item label="审批原因:">
               <el-input type="textarea" v-model="updatePending.approvalReason"></el-input>
             </el-form-item>
           </el-col>
@@ -126,8 +136,7 @@ export default {
         name: '',
         leaveTime: '',
         returnTime: '',
-        pageNum: '',
-        pageSize: ''
+        applyTime: ''
       },
       pageParam: {
         pageNum: 1,

@@ -19,6 +19,9 @@
       <el-form-item>
         <el-button type="primary" size="small" @click="initUserHealthList">查询</el-button>
       </el-form-item>
+      <el-form-item>
+        <el-button type="success" size="small" @click="showInsertPage" v-if="healthInfoToday ='1'">填报</el-button>
+      </el-form-item>
     </el-form>
   </div>
   <div class="table-div">
@@ -178,6 +181,86 @@
       </el-row>
     </el-form>
   </el-dialog>
+<!--  填报弹出框-->
+  <el-dialog
+      title="申请信息"
+      :visible.sync="dialogVisible2"
+      width="50%">
+    <el-form ref="form" :model="userHealth" size="mini">
+      <el-row>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="体温:">
+            <el-input size="mini" v-model="userHealth.temperature"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="是否发热:">
+            <el-switch
+                class="switch"
+                v-model="userHealth.isFever"
+                active-value="0"
+                inactive-value="1"
+                active-text="正常"
+                inactive-text="发热"
+                active-color="#13ce66"
+                inactive-color="#ff4949">
+            </el-switch>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="是否接触高风险人员或地区:">
+            <el-switch
+                class="switch"
+                v-model="userHealth.isContactRisk"
+                active-value="1"
+                inactive-value="0"
+                active-text="是"
+                inactive-text="否"
+                active-color="#13ce66"
+                inactive-color="#ff4949">
+            </el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="当前所在地:">
+            <el-input size="mini" v-model="userHealth.localToday"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="健康码颜色:">
+            <el-select v-model="userHealth.healthCodeColor" size="mini">
+              <el-option label="绿色" value="1"></el-option>
+              <el-option label="黄色" value="2"></el-option>
+              <el-option label="红色" value="3"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="9" :offset="2">
+          <el-form-item label="是否属实:">
+            <el-switch
+                class="switch"
+                v-model="userHealth.isTrue"
+                active-value="1"
+                inactive-value="0"
+                active-text="属实"
+                inactive-text="不属实"
+                active-color="#13ce66"
+                inactive-color="#ff4949">
+            </el-switch>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-form-item>
+          <el-button size="mini" type="success" style="margin-left: 380px" @click="InsertHealthInfo">填报</el-button>
+        </el-form-item>
+      </el-row>
+    </el-form>
+  </el-dialog>
 </div>
 </template>
 
@@ -214,8 +297,8 @@ export default {
         pageSize: 10,
         total: 0
       },
-      dialogVisible: false
-
+      dialogVisible: false,
+      dialogVisible2: false
     }
   },
   methods: {
@@ -263,7 +346,28 @@ export default {
         this.dialogVisible = false;
         this.initUserHealthList();
       })
-    }
+    },
+
+    /**
+     * 弹出填报页面
+     */
+    showInsertPage(){
+      this.dialogVisible2 = true;
+      this.userHealth = {};
+    },
+
+    /**
+     * 填报
+     */
+    InsertHealthInfo(){
+      postRequest('/userHealth/insertHealthInfo',this.userHealth).then(res=>{
+        if (res){
+          this.$message.success(res.data.message);
+        }
+        this.dialogVisible2 = false;
+        this.initUserHealthList();
+      })
+    },
   }
 }
 </script>
