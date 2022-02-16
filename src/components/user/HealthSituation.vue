@@ -71,7 +71,7 @@
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button
-                size="mini" type="success" @click="showUpdateHealthPage(scope.row)">编辑
+                size="mini" type="text" @click="showUpdateHealthPage(scope.row)">编辑
             </el-button>
           </template>
         </el-table-column>

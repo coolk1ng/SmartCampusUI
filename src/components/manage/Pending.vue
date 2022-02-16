@@ -64,7 +64,7 @@
           <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button
-                  size="mini" type="success" @click="showApprovalPage(scope.row)">审批
+                  size="mini  " type="text" @click="showApprovalPage(scope.row)">审批
               </el-button>
             </template>
           </el-table-column>

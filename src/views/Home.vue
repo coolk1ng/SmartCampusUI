@@ -4,9 +4,8 @@
       <el-header class="homeHeader">
         <div class="title">疫情期间进出校园管理系统</div>
         <div>
-          <el-link class="userInfo" type="info">用户: {{ userInfo.username }}</el-link>
-          <!--          <el-link class="userInfo" type="info" v-if="userInfo.studentId!=null">学号: {{userInfo.studentId}}</el-link>-->
-          <el-button type="text" @click="logout">注销</el-button>
+          <el-button disabled  class="userInfo" type="text"><i class="fa fa-user"></i> :  {{ userInfo.username }}</el-button>
+          <el-button class="logout" type="text" @click="logout"><i class="fa fa-power-off" style="color:firebrick"></i></el-button>
         </div>
       </el-header>
       <el-container>
@@ -109,11 +108,9 @@ export default {
 }
 
 .userInfo {
-  margin-right: 20px;
-  font-size: 1px;
+  margin-right: 5px;
   color: #1a1818;
 }
-
 .menuTitle {
   font-weight: bold;
   color: #4becec;

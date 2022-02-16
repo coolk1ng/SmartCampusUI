@@ -56,7 +56,7 @@
                            width="245 ">
             <template slot-scope="scope">
               <el-button
-                  size="mini" type="success" @click="getDetail(scope.row)">查看
+                  size="mini" type="text" @click="getDetail(scope.row)">查看
               </el-button>
             </template>
           </el-table-column>

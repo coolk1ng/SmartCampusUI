@@ -50,10 +50,10 @@
           <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button
-                  size="mini" type="primary" @click="getDetail(scope.row)">详情
+                  size="mini" type="text" @click="getDetail(scope.row)">详情
               </el-button>
               <el-button
-                  size="mini" type="success" @click="showEditPage(scope.row)">编辑
+                  size="mini" type="text" @click="showEditPage(scope.row)">编辑
               </el-button>
             </template>
           </el-table-column>
