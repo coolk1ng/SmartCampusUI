@@ -4,8 +4,9 @@
       <el-header class="homeHeader">
         <div class="title">疫情期间进出校园管理系统</div>
         <div>
-          <el-link class="userInfo" type="info">用户: {{userInfo.username}}</el-link>
-<!--          <el-link class="userInfo" type="info" v-if="userInfo.studentId!=null">学号: {{userInfo.studentId}}</el-link>-->
+          <el-link class="userInfo" type="info">用户: {{ userInfo.username }}</el-link>
+          <!--          <el-link class="userInfo" type="info" v-if="userInfo.studentId!=null">学号: {{userInfo.studentId}}</el-link>-->
+          <el-button type="text" @click="logout">注销</el-button>
         </div>
       </el-header>
       <el-container>
@@ -37,7 +38,7 @@ export default {
   data() {
     return {
       menus: [],
-      userInfo:{}
+      userInfo: {}
     }
   },
   methods: {
@@ -53,9 +54,34 @@ export default {
     /**
      * 获取用户信息
      */
-    getUserInfo(){
+    getUserInfo() {
       this.userInfo = JSON.parse(window.sessionStorage.getItem('user')).data;
       console.log(this.userInfo);
+    },
+
+    /**
+     * 注销
+     */
+    logout() {
+      this.$confirm('你将注销该用户, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        postRequest('/logout').then(res => {
+          sessionStorage.clear();
+          this.$router.push('/');
+        })
+        this.$message({
+          type: 'success',
+          message: '注销成功!'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消'
+        });
+      });
     }
   }
 }
@@ -76,16 +102,19 @@ export default {
   color: white;
   margin-left: 20px;
 }
+
 .homeAside {
   height: 100vh;
   background-color: #3a566b;
 }
-.userInfo{
+
+.userInfo {
   margin-right: 20px;
   font-size: 1px;
   color: #1a1818;
 }
-.menuTitle{
+
+.menuTitle {
   font-weight: bold;
   color: #4becec;
 }
