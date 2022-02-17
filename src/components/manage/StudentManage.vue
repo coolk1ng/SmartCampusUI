@@ -102,7 +102,10 @@
           </el-col>
           <el-col :span="9" :offset="2">
             <el-form-item label="性别:">
-              <el-input v-model="student.sex"></el-input>
+              <el-select v-model="student.sex">
+                <el-option label="男" value="1"></el-option>
+                <el-option label="女" value="0"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
         </el-row>
@@ -121,7 +124,15 @@
         <el-row>
           <el-col :span="9" :offset="2">
             <el-form-item label="任职情况:">
-              <el-input v-model="student.cognition"></el-input>
+              <el-select v-model="student.cognition">
+                <el-option label="班长" value="1"></el-option>
+                <el-option label="学习委员" value="2"></el-option>
+                <el-option label="体育委员" value="3"></el-option>
+                <el-option label="生活委员" value="4"></el-option>
+                <el-option label="文艺委员" value="5"></el-option>
+                <el-option label="寝室长" value="6"></el-option>
+                <el-option label="无" value="7"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
@@ -170,7 +181,12 @@
         <el-row>
           <el-col :span="9" :offset="2">
             <el-form-item label="政治面貌:">
-              <el-input v-model="student.politicalStatus"></el-input>
+              <el-select v-model="student.politicalStatus">
+                <el-option label="中共党员" value="1"></el-option>
+                <el-option label="中共预备党员" value="2"></el-option>
+                <el-option label="共青团员" value="3"></el-option>
+                <el-option label="群众" value="4"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
