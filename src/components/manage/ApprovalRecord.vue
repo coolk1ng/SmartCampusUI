@@ -6,9 +6,9 @@
           <el-input v-model="recordForm.name" size="small" clearable></el-input>
         </el-form-item>
         <el-form-item label="审批结果" style="margin-left: 20px">
-          <el-select v-model="recordForm.approvalResult" size="small">
+          <el-select v-model="recordForm.approvalResult" size="small" clearable>
             <el-option label="批准" value="1"></el-option>
-            <el-option label="驳回" value="2"></el-option>
+            <el-option label="驳回" value="0"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>

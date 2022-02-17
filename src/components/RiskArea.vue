@@ -6,10 +6,10 @@
           <el-input size="small" clearable v-model="riskAreaParam.area"></el-input>
         </el-form-item>
         <el-form-item label="风险等级" style="margin-left: 20px">
-          <el-select size="small" v-model="riskAreaParam.areaLevel">
-            <el-option label="高风险" value="1"></el-option>
+          <el-select size="small" v-model="riskAreaParam.riskLevel" clearable>
+            <el-option label="低风险" value="1"></el-option>
             <el-option label="中风险" value="2"></el-option>
-            <el-option label="低风险" value="3"></el-option>
+            <el-option label="高风险" value="3"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
@@ -136,7 +136,7 @@ export default {
       riskAreaParam: {
         id: '',
         area: '',
-        areaLevel: ''
+        riskLevel: ''
       },
       pageParam: {
         pageNum: 1,
