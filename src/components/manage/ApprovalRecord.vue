@@ -38,6 +38,16 @@
           <el-table-column
               prop="approvalResult"
               label="审批结果">
+            <template slot-scope="scope">
+              <el-switch
+                  disabled
+                  v-model="scope.row.approvalResult"
+                  active-value="1"
+                  inactive-value="0"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949">
+              </el-switch>
+            </template>
           </el-table-column>
           <el-table-column
               prop="approvalReason"
@@ -89,13 +99,17 @@
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="审批结果:">
-              <el-input v-model="record.approvalResult"></el-input>
-            </el-form-item>
+            <el-switch
+                v-model="record.approvalResult"
+                active-value="1"
+                inactive-value="0"
+                active-text="批准"
+                inactive-text="驳回">
+            </el-switch>
           </el-col>
           <el-col :span="9" :offset="2">
             <el-form-item label="审批时间:">
-              <el-date-picker type="date" placeholder="选择日期" v-model="record.approvalTime"
+              <el-date-picker type="date" placeholder="选择日期" v-model="record.approvalTime" disabled
                               style="width: 100%;"></el-date-picker>
             </el-form-item>
           </el-col>
