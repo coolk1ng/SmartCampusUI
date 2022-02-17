@@ -6,7 +6,10 @@
           <el-input v-model="searchParam.name" size="small" clearable></el-input>
         </el-form-item>
         <el-form-item label="性别" style="margin-left: 20px">
-          <el-input v-model="searchParam.sex" size="small" clearable></el-input>
+          <el-select v-model="student.sex" clearable placeholder="" size="small">
+            <el-option label="男" value="1"></el-option>
+            <el-option label="女" value="0"></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item label="班级" style="margin-left: 20px">
           <el-input v-model="searchParam.class" size="small" clearable></el-input>
@@ -102,7 +105,7 @@
           </el-col>
           <el-col :span="9" :offset="2">
             <el-form-item label="性别:">
-              <el-select v-model="student.sex">
+              <el-select v-model="student.sex" clearable>
                 <el-option label="男" value="1"></el-option>
                 <el-option label="女" value="0"></el-option>
               </el-select>
