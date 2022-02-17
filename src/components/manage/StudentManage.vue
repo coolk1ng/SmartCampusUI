@@ -6,7 +6,7 @@
           <el-input v-model="searchParam.name" size="small" clearable></el-input>
         </el-form-item>
         <el-form-item label="性别" style="margin-left: 20px">
-          <el-select v-model="student.sex" clearable placeholder="" size="small">
+          <el-select v-model="searchParam.sex" clearable placeholder="" size="small">
             <el-option label="男" value="1"></el-option>
             <el-option label="女" value="0"></el-option>
           </el-select>
