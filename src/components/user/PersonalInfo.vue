@@ -3,7 +3,7 @@
     <el-descriptions class="margin-top" title="个人信息" :column="2" border>
       <template slot="extra">
         <el-tooltip content="操作" effect="dark">
-          <el-button type="primary" size="small" @click="showEditPage"><i class="fa fa-gavel"></i></el-button>
+          <el-button type="primary" size="small" @click="showEditPage"><i class="fa fa-pencil"></i></el-button>
         </el-tooltip>
       </template>
       <el-descriptions-item>
