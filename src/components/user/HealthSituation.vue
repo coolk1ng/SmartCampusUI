@@ -3,10 +3,10 @@
   <div class="search-div">
     <el-form :inline="true" class="demo-form-inline" :model="userHealthParam">
       <el-form-item label="姓名">
-        <el-input v-model="userHealthParam.name" size="small" clearable></el-input>
+        <el-input v-model="userHealthParam.name" size="small" clearable maxlength="4"></el-input>
       </el-form-item>
       <el-form-item label="健康码颜色" style="margin-left: 20px">
-        <el-select v-model="userHealthParam.healthCodeColor" size="small" clearable>
+        <el-select v-model="userHealthParam.healthCodeColor" size="small" clearable placeholder="">
           <el-option label="绿色" value="1"></el-option>
           <el-option label="黄色" value="2"></el-option>
           <el-option label="红色" value="3"></el-option>
@@ -17,10 +17,14 @@
                         size="small"></el-date-picker>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" size="small" @click="initUserHealthList">查询</el-button>
+        <el-tooltip content="查询" effect="dark">
+          <el-button type="primary" size="small" @click="initUserHealthList" style="margin-left: 20px"><i class="fa fa-search"></i></el-button>
+        </el-tooltip>
       </el-form-item>
       <el-form-item>
-        <el-button type="success" size="small" @click="showInsertPage" v-if="healthInfoToday ='1'">填报</el-button>
+        <el-tooltip content="填报" effect="dark">
+          <el-button type="success" size="small" @click="showInsertPage" v-if="healthInfoToday ='1'"><i class="fa fa-paint-brush"></i></el-button>
+        </el-tooltip>
       </el-form-item>
     </el-form>
   </div>

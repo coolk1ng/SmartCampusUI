@@ -3,7 +3,7 @@
     <div class="search-div">
       <el-form :inline="true" class="demo-form-inline" :model="applyParam">
         <el-form-item label="姓名">
-          <el-input v-model="applyParam.name" size="small" clearable></el-input>
+          <el-input v-model="applyParam.name" size="small" clearable maxlength="4"></el-input>
         </el-form-item>
         <el-form-item label="审批结果" style="margin-left: 20px">
           <el-select v-model="applyParam.applyState" size="small">
@@ -16,7 +16,9 @@
                           size="small"></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small" @click="initApplyRecordList">查询</el-button>
+          <el-tooltip content="查询" effect="dark">
+            <el-button type="primary" size="small" @click="initApplyRecordList" style="margin-left: 20px"><i class="fa fa-search"></i></el-button>
+          </el-tooltip>
         </el-form-item>
       </el-form>
     </div>

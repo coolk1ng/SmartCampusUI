@@ -3,21 +3,23 @@
     <div class="search-div">
       <el-form :inline="true" class="demo-form-inline" :model="healthManage">
         <el-form-item label="姓名">
-          <el-input size="small" clearable v-model="healthManageParam.name"></el-input>
+          <el-input type="text" size="small" maxlength="4" clearable v-model="healthManageParam.name"></el-input>
         </el-form-item>
         <el-form-item label="健康码颜色" style="margin-left: 20px">
-          <el-select size="small" v-model="healthManageParam.healthCodeColor">
+          <el-select size="small" v-model="healthManageParam.healthCodeColor" placeholder="" clearable>
             <el-option label="绿色" value="1"></el-option>
             <el-option label="黄色" value="2"></el-option>
             <el-option label="红色" value="3"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="填报时间" style="margin-left: 20px" v-model="healthManageParam.createTime">
-          <el-date-picker value-format="yyyy-MM-dd" type="date"
+        <el-form-item label="填报时间" style="margin-left: 20px" >
+          <el-date-picker value-format="yyyy-MM-dd" type="date" v-model="healthManageParam.createTime"
                           size="small"></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small">查询</el-button>
+          <el-tooltip content="查询" effect="dark">
+            <el-button type="primary" size="small"><i class="fa fa-search"></i></el-button>
+          </el-tooltip>
         </el-form-item>
       </el-form>
     </div>

@@ -3,7 +3,7 @@
     <div class="search-div">
       <el-form :inline="true" class="demo-form-inline" :model="searchParam">
         <el-form-item label="姓名">
-          <el-input v-model="searchParam.name" size="small" clearable></el-input>
+          <el-input v-model="searchParam.name" size="small" clearable maxlength="4"></el-input>
         </el-form-item>
         <el-form-item label="性别" style="margin-left: 20px">
           <el-select v-model="searchParam.sex" clearable placeholder="" size="small">
@@ -15,13 +15,19 @@
           <el-input v-model="searchParam.class" size="small" clearable></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small" @click="initList" style="margin-left: 20px">查询</el-button>
+          <el-tooltip content="查询" effect="dark">
+            <el-button type="primary" size="small" @click="initList" style="margin-left: 20px"><i class="fa fa-search"></i></el-button>
+          </el-tooltip>
         </el-form-item>
         <el-form-item>
-          <el-button type="success" size="small" @click="showAddPage">添加</el-button>
+          <el-tooltip content="新增" effect="dark">
+            <el-button type="success" size="small" @click="showAddPage"><i class="fa fa-pencil"></i></el-button>
+          </el-tooltip>
         </el-form-item>
         <el-form-item>
-          <el-button type="danger" size="small" @click="deleteByUserIds">删除</el-button>
+          <el-tooltip effect="dark" content="删除">
+            <el-button type="danger" size="small" @click="deleteByUserIds"><i class="fa fa-trash"></i></el-button>
+          </el-tooltip>
         </el-form-item>
       </el-form>
     </div>

@@ -13,7 +13,9 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small" @click="initList">查询</el-button>
+          <el-tooltip content="查询" effect="dark">
+            <el-button type="primary" size="small" @click="initList" style="margin-left: 20px"><i class="fa fa-search"></i></el-button>
+          </el-tooltip>
         </el-form-item>
       </el-form>
     </div>

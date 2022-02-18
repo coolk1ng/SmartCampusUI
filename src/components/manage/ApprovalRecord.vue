@@ -3,16 +3,18 @@
     <div class="search-div">
       <el-form :inline="true" class="demo-form-inline" :model="recordForm">
         <el-form-item label="姓名">
-          <el-input v-model="recordForm.name" size="small" clearable></el-input>
+          <el-input v-model="recordForm.name" size="small" clearable maxlength="4"></el-input>
         </el-form-item>
         <el-form-item label="审批结果" style="margin-left: 20px">
-          <el-select v-model="recordForm.approvalResult" size="small" clearable>
+          <el-select v-model="recordForm.approvalResult" size="small" clearable placeholder="">
             <el-option label="批准" value="1"></el-option>
             <el-option label="驳回" value="0"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small" @click="searchList">查询</el-button>
+          <el-tooltip effect="dark" content="查询">
+            <el-button type="primary" size="small" @click="searchList" style="margin-left: 20px"><i class="fa fa-search"></i></el-button>
+          </el-tooltip>
         </el-form-item>
       </el-form>
     </div>
