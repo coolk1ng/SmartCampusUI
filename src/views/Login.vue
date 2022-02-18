@@ -16,7 +16,7 @@
                   style="width: 240px"></el-input>
         <img :src="captchaUrl" @click="updateCaptcha" style="margin-left: 10px" width="100px" height="39px">
       </el-form-item>
-      <el-checkbox v-model="checked" class="remember">记住我</el-checkbox>
+<!--      <el-checkbox v-model="checked" class="remember-me">记住我</el-checkbox>-->
       <el-button type="primary" style="width:100%" @click="submitForm">登录</el-button>
     </el-form>
   </div>

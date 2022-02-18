@@ -3,10 +3,10 @@
   <div class="search-div">
     <el-form :inline="true" class="demo-form-inline" :model="userHealthParam">
       <el-form-item label="姓名">
-        <el-input v-model="userHealthParam.isFever" size="small" clearable></el-input>
+        <el-input v-model="userHealthParam.name" size="small" clearable></el-input>
       </el-form-item>
       <el-form-item label="健康码颜色" style="margin-left: 20px">
-        <el-select v-model="userHealthParam.healthCodeColor" size="small">
+        <el-select v-model="userHealthParam.healthCodeColor" size="small" clearable>
           <el-option label="绿色" value="1"></el-option>
           <el-option label="黄色" value="2"></el-option>
           <el-option label="红色" value="3"></el-option>
@@ -278,6 +278,7 @@ export default {
         isFever: '',
         healthCodeColor: '',
         createTime: '',
+        name: ''
       },
       userHealth: {
         id: '',

@@ -65,6 +65,9 @@
               <el-button
                   size="mini" type="text" @click="showEditPage(scope.row)">编辑
               </el-button>
+              <el-button
+                  size="mini" type="text" @click="deleteInfo(scope.row)">删除
+              </el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -164,7 +167,10 @@ export default {
       updateRecord: {},
       dialogVisible: false,
       disabled: true,
-      hasButton: false
+      hasButton: false,
+      applyNos: {
+        applyNos: ''
+      }
     }
   },
   methods: {
@@ -234,6 +240,33 @@ export default {
           Message.success({message: "编辑成功"});
         }
       })
+    },
+
+    /**
+     * 删除
+     */
+    deleteInfo(record){
+      this.$confirm('你将删除这些信息, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.applyNos.applyNos = record.applyNo;
+        postRequest('/approvalRecord/deleteApprovalRecord', this.applyNos).then(res => {
+          if (res){
+            this.initList();
+          }
+        })
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     }
   }
 }
