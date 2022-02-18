@@ -152,70 +152,70 @@
         title="个人信息"
         :visible.sync="dialogVisible"
         width="50%">
-      <el-form ref="form" size="mini">
+      <el-form ref="form" size="mini" :rules="rules">
         <el-row>
           <el-col :span="9" :offset="2">
-            <el-form-item label="用户名:">
+            <el-form-item label="用户名:" prop="userName">
               <el-input v-model="personalInfo.userName"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="姓名:">
+            <el-form-item label="姓名:" prop="name">
               <el-input v-model="personalInfo.name"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="9" :offset="2">
-            <el-form-item label="密码:">
+            <el-form-item label="密码:" prop="password">
               <el-input type="password" v-model="personalInfo.password"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="性别:">
+            <el-form-item label="性别:" prop="sex">
               <el-input v-model="personalInfo.sex"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="9" :offset="2">
-            <el-form-item label="身份证号:">
+            <el-form-item label="身份证号:" prop="idCardNum">
               <el-input v-model="personalInfo.idCardNum"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="学号:">
+            <el-form-item label="学号:" prop="studentId">
               <el-input v-model="personalInfo.studentId"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="9" :offset="2">
-            <el-form-item label="学院:">
+            <el-form-item label="学院:" prop="college">
               <el-input v-model="personalInfo.college"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="专业:">
+            <el-form-item label="专业:" prop="professional">
               <el-input v-model="personalInfo.professional"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="9" :offset="2">
-            <el-form-item label="班级:">
+            <el-form-item label="班级:" prop="className">
               <el-input v-model="personalInfo.className"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="联系方式:">
+            <el-form-item label="联系方式:" prop="telephone">
               <el-input v-model="personalInfo.telephone"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="9" :offset="2">
-            <el-form-item label="政治面貌:">
+            <el-form-item label="政治面貌:" prop="politicalStatus">
               <el-select v-model="personalInfo.politicalStatus">
                 <el-option label="中共党员" value="1"></el-option>
                 <el-option label="中共预备党员" value="2"></el-option>
@@ -225,14 +225,14 @@
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="年龄:">
+            <el-form-item label="年龄:" prop="age">
               <el-input v-model="personalInfo.age"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="9" :offset="2">
-            <el-form-item label="任职情况:">
+            <el-form-item label="任职情况:" prop="cognition">
               <el-select v-model="personalInfo.cognition">
                 <el-option label="班长" value="1"></el-option>
                 <el-option label="学习委员" value="2"></el-option>
@@ -244,7 +244,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="入学时间:">
+            <el-form-item label="入学时间:" prop="enterTime">
               <el-date-picker v-model="personalInfo.enterTime" type="date" placeholder="选择日期"
                               style="width: 100%;"></el-date-picker>
             </el-form-item>
@@ -252,37 +252,37 @@
         </el-row>
         <el-row>
           <el-col :span="9" :offset="2">
-            <el-form-item label="父亲联系方式:">
+            <el-form-item label="父亲联系方式:" prop="fatherTel">
               <el-input v-model="personalInfo.fatherTel"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="母亲联系方式:">
+            <el-form-item label="母亲联系方式:" prop="motherTel">
               <el-input v-model="personalInfo.motherTel"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="9" :offset="2">
-            <el-form-item label="出生日期:">
+            <el-form-item label="出生日期:" prop="birthTime">
               <el-date-picker value-format="yyyy-MM-dd" v-model="personalInfo.birthTime" type="date" placeholder="选择日期"
                               style="width: 100%;"></el-date-picker>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="备注:">
+            <el-form-item label="备注:" prop="remark">
               <el-input v-model="personalInfo.remark"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="9" :offset="2">
-            <el-form-item label="户籍地:">
+            <el-form-item label="户籍地:" prop="domicile">
               <el-input v-model="personalInfo.domicile"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="现居住地:">
+            <el-form-item label="现居住地:" prop="currentAddress">
               <el-input v-model="personalInfo.currentAddress"></el-input>
             </el-form-item>
           </el-col>
@@ -308,6 +308,28 @@ export default {
   name: "PersonalInfo",
   data() {
     return {
+      rules: {
+        userName: [
+          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { min: 4, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+        ],
+        name: [
+          { required: true, message: '请输入姓名', trigger: 'blur' },
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+        ],
+        sex: [
+          { required: true, message: '请输入性别', trigger: 'blur' },
+        ],
+        idCardNum: [
+          { required: true, message: '请输入身份证号', trigger: 'blur' },
+        ],
+        studentId: [
+          { required: true, message: '请输入学号', trigger: 'blur' },
+          { min: 10, max: 10, message: '长度为10个字符', trigger: 'blur' }
+        ]
+      },
       dialogVisible: false,
       personalInfo: {
         id: '',
