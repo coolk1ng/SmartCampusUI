@@ -34,14 +34,14 @@
         <el-input v-model="applyInfo.applyReason" size="mini"></el-input>
       </el-form-item>
       <el-form-item label="申请天数" prop="days">
-        <el-input v-model="applyInfo.days" size="mini"></el-input>
+        <el-input v-model="applyInfo.days" size="mini" type="number"></el-input>
       </el-form-item>
       <el-form-item label="选择时间" prop="returnTime">
         <el-col :span="11">
           <el-date-picker type="date" placeholder="离校时间" v-model="applyInfo.leaveTime" style="width: 100%;"
                           size="mini"></el-date-picker>
         </el-col>
-        <el-col class="line" :span="2">-</el-col>
+        <el-col class="line" :span="2" style="padding-left: 10px">-</el-col>
         <el-col :span="11">
           <el-date-picker type="date" placeholder="返校时间" v-model="applyInfo.returnTime" style="width: 100%;"
                           size="mini"></el-date-picker>

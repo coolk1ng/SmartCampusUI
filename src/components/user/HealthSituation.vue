@@ -138,10 +138,10 @@
             <el-switch
                 class="switch"
                 v-model="userHealth.isContactRisk"
-                active-value="1"
-                inactive-value="0"
-                active-text="是"
-                inactive-text="否"
+                active-value="0"
+                inactive-value="1"
+                active-text="否"
+                inactive-text="是"
                 active-color="#13ce66"
                 inactive-color="#ff4949">
             </el-switch>
