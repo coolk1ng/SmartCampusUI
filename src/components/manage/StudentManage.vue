@@ -102,7 +102,7 @@
         title="学生详情"
         :visible.sync="dialogVisible"
         width="50%">
-      <el-form ref="form" :model="student" size="mini" :disabled="disabled">
+      <el-form ref="form" :rules="rules" :model="student" size="mini" :disabled="disabled">
         <el-row>
           <el-col :span="9" :offset="2">
             <el-form-item label="姓名:">
@@ -145,7 +145,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
-            <el-form-item label="学号:">
+            <el-form-item label="学号:" prop="studentId">
               <el-input v-model="student.studentId"></el-input>
             </el-form-item>
           </el-col>
@@ -264,7 +264,12 @@ export default {
       userIds: {
         userIds: ''
       },
-      multipleSelection: []
+      multipleSelection: [],
+      rules: {
+        studentId: [
+          { required: true, message: '请输入学号', trigger: 'blur' }
+        ]
+      }
     }
   },
   methods: {
@@ -332,11 +337,19 @@ export default {
      * 编辑
      */
     editStudent() {
-      postRequest('/userInfo/addAndEditStudent', this.student).then(res => {
-        if (res){
-          this.dialogVisible = false;
-          this.initList();
-          Message.success({message: "编辑成功"});
+      this.$refs.form.validate((valid)=>{
+        if (valid){
+          postRequest('/userInfo/addAndEditStudent', this.student).then(res => {
+            if (res) {
+              this.$notify({
+                title: '成功',
+                message: '已新增一条学生信息',
+                type: 'success'
+              });
+              this.dialogVisible = false;
+              this.initList();
+            }
+          })
         }
       })
     },
