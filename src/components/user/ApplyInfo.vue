@@ -123,7 +123,12 @@ export default {
         if (valid){
           postRequest('/applyInfo/doApplication', this.applyInfo).then(res => {
             if (res) {
-              this.$message.success('申请成功');
+              this.$notify({
+                title: '成功',
+                message: '已提交一条申请',
+                type: 'success'
+              });
+              this.applyInfo ={}
             }
           })
         }

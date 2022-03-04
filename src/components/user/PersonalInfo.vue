@@ -11,140 +11,140 @@
           <i class="el-icon-user"></i>
           用户名
         </template>
-        {{personalInfo.userName}}
+        {{ personalInfo.userName }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-address-card-o"></i>
           姓名
         </template>
-        {{personalInfo.name}}
+        {{ personalInfo.name }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-eye"></i>
           密码
         </template>
-        {{personalInfo.password!='' ? '********': ''}}
+        {{ personalInfo.password != '' ? '********' : '' }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-male"></i>
           性别
         </template>
-        {{personalInfo.sex}}
+        {{ personalInfo.sexValue }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-id-card"></i>
           身份证号
         </template>
-        {{personalInfo.idCardNum}}
+        {{ personalInfo.idCardNum }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-frown-o"></i>
           学号
         </template>
-        {{personalInfo.studentId}}
+        {{ personalInfo.studentId }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-graduation-cap"></i>
           学院
         </template>
-        {{personalInfo.college}}
+        {{ personalInfo.college }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-globe"></i>
           专业
         </template>
-        {{personalInfo.professional}}
+        {{ personalInfo.professional }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-users"></i>
           班级
         </template>
-        {{personalInfo.className}}
+        {{ personalInfo.className }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-mobile"></i>
           联系方式
         </template>
-        {{personalInfo.telephone}}
+        {{ personalInfo.telephone }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-newspaper-o"></i>
           政治面貌
         </template>
-        {{personalInfo.politicalStatus}}
+        {{ personalInfo.politicalStatusValue }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-thumb-tack"></i>
           年龄
         </template>
-        {{personalInfo.age}}
+        {{ personalInfo.age }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-handshake-o"></i>
           任职情况
         </template>
-        {{personalInfo.cognition}}
+        {{ personalInfo.cognitionValue }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-hourglass"></i>
           入学时间
         </template>
-        {{personalInfo.enterTime}}
+        {{ personalInfo.enterTime }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-phone"></i>
           父亲联系方式
         </template>
-        {{personalInfo.fatherTel}}
+        {{ personalInfo.fatherTel }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-phone"></i>
           母亲联系方式
         </template>
-        {{personalInfo.motherTel}}
+        {{ personalInfo.motherTel }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-hourglass-end"></i>
           出生日期
         </template>
-        {{personalInfo.birthTime}}
+        {{ personalInfo.birthTime }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="el-icon-tickets"></i>
           备注
         </template>
-        {{personalInfo.remark}}
+        {{ personalInfo.remark }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-home"></i>
           户籍地
         </template>
-        {{personalInfo.domicile}}
+        {{ personalInfo.domicile }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template slot="label">
           <i class="fa fa-map-marker"></i>
           现居住地
         </template>
-        {{personalInfo.currentAddress}}
+        {{ personalInfo.currentAddress }}
       </el-descriptions-item>
     </el-descriptions>
     <!--    弹出框-->
@@ -173,7 +173,10 @@
           </el-col>
           <el-col :span="9" :offset="2">
             <el-form-item label="性别:" prop="sex">
-              <el-input v-model="personalInfo.sex"></el-input>
+              <el-select v-model="personalInfo.sex" size="mini">
+                <el-option label="男" value="1"></el-option>
+                <el-option label="女" value="0"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
         </el-row>
@@ -216,7 +219,7 @@
         <el-row>
           <el-col :span="9" :offset="2">
             <el-form-item label="政治面貌:" prop="politicalStatus">
-              <el-select v-model="personalInfo.politicalStatus">
+              <el-select v-model="personalInfo.politicalStatus" value-key="">
                 <el-option label="中共党员" value="1"></el-option>
                 <el-option label="中共预备党员" value="2"></el-option>
                 <el-option label="共青团员" value="3"></el-option>
@@ -310,24 +313,24 @@ export default {
     return {
       rules: {
         userName: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
-          { min: 4, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+          {required: true, message: '请输入用户名', trigger: 'blur'},
+          {min: 4, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur'}
         ],
         name: [
-          { required: true, message: '请输入姓名', trigger: 'blur' },
+          {required: true, message: '请输入姓名', trigger: 'blur'},
         ],
         password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
+          {required: true, message: '请输入密码', trigger: 'blur'},
         ],
         sex: [
-          { required: true, message: '请输入性别', trigger: 'blur' },
+          {required: true, message: '请输入性别', trigger: 'blur'},
         ],
         idCardNum: [
-          { required: true, message: '请输入身份证号', trigger: 'blur' },
+          {required: true, message: '请输入身份证号', trigger: 'blur'},
         ],
         studentId: [
-          { required: true, message: '请输入学号', trigger: 'blur' },
-          { min: 10, max: 10, message: '长度为10个字符', trigger: 'blur' }
+          {required: true, message: '请输入学号', trigger: 'blur'},
+          {min: 10, max: 10, message: '长度为10个字符', trigger: 'blur'}
         ]
       },
       dialogVisible: false,
@@ -338,16 +341,19 @@ export default {
         password: '',
         name: '',
         studentId: '',
-        sex: '',
+        sexValue: '', //性别value
+        sex: '', //性别code
         idCardNum: '',
         birthTime: '',
         college: '',
         professional: '',
         className: '',
         telephone: '',
-        politicalStatus: '',
+        politicalStatus: '', //政治面貌code
+        politicalStatusValue: '', //政治面貌value
         age: '',
-        cognition: '',
+        cognition: '', //任职情况code
+        cognitionValue: '', //任职情况value
         enterTime: '',
         fatherTel: '',
         motherTel: '',
@@ -365,18 +371,23 @@ export default {
       this.dialogVisible = true;
       this.getPersonalInfo();
     },
-    getPersonalInfo(){
-      postRequest('/user/getPersonalInfo').then(res=>{
-        if (res){
+    getPersonalInfo() {
+      postRequest('/user/getPersonalInfo').then(res => {
+        if (res) {
           this.personalInfo = res.data;
         }
       })
     },
-    updateUserInfo(){
-      postRequest('/user/updatePersonalInfo',this.personalInfo).then(res=>{
-        if (res){
+    updateUserInfo() {
+      postRequest('/user/updatePersonalInfo', this.personalInfo).then(res => {
+        if (res) {
           this.dialogVisible = false;
-          Message.success({message: "编辑成功"});
+          this.$notify({
+            title: '成功',
+            message: '个人信息编辑成功',
+            type: 'success'
+          });
+          this.getPersonalInfo();
         }
       })
     }
