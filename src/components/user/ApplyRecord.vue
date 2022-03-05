@@ -170,7 +170,14 @@
         </el-row>
         <el-row>
           <el-col :span="20" :offset="2">
-            <el-form-item label="原因:">
+            <el-form-item label="申请原因:">
+              <el-input type="textarea" v-model="applyRecord.applyReason"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="20" :offset="2">
+            <el-form-item label="审批原因:">
               <el-input type="textarea" v-model="applyRecord.approvalReason"></el-input>
             </el-form-item>
           </el-col>
@@ -204,7 +211,8 @@ export default {
         guardianTel: '', //监护人联系方式
         trafficType: '',
         trafficNum: '',
-        managerId: ''
+        managerId: '',
+        approvalReason: ''
       },
       applyParam: {
         name: '',
