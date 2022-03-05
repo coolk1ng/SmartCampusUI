@@ -100,7 +100,7 @@
           </el-col>
           <el-col :span="9" :offset="2">
             <el-form-item label="审批人:">
-              <el-input v-model="record.approvalPerson" disabled></el-input>
+              <el-input v-model="record.approvalPersonName" disabled></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="9" :offset="2">
@@ -165,6 +165,7 @@ export default {
         approvalResult: '',
         approvalTime: '',
         approvalReason: '',
+        approvalPersonName: ''
       },
       updateRecord: {},
       dialogVisible: false,
@@ -239,7 +240,11 @@ export default {
         if (res) {
           this.dialogVisible = false;
           this.initList();
-          Message.success({message: "编辑成功"});
+          this.$notify({
+            title: '成功',
+            message: '编辑信息成功',
+            type: 'success'
+          });
         }
       })
     },
@@ -259,13 +264,14 @@ export default {
             this.initList();
           }
         })
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
+        this.$notify({
+          title: '成功',
+          message: '删除信息成功',
+          type: 'success'
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
+        this.$notify({
+          title: '消息',
           message: '已取消删除'
         });
       });

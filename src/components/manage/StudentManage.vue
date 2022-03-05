@@ -341,13 +341,23 @@ export default {
         if (valid){
           postRequest('/userInfo/addAndEditStudent', this.student).then(res => {
             if (res) {
-              this.$notify({
-                title: '成功',
-                message: '已新增一条学生信息',
-                type: 'success'
-              });
-              this.dialogVisible = false;
-              this.initList();
+              if(this.student.id){
+                this.$notify({
+                  title: '成功',
+                  message: '编辑条学生信息成功',
+                  type: 'success'
+                });
+                this.dialogVisible = false;
+                this.initList();
+              }else{
+                this.$notify({
+                  title: '成功',
+                  message: '新增学生信息成功',
+                  type: 'success'
+                });
+                this.dialogVisible = false;
+                this.initList();
+              }
             }
           })
         }
@@ -369,13 +379,14 @@ export default {
         postRequest('/userInfo/deleteStudent', this.userIds).then(res => {
           this.initList();
         })
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
+        this.$notify({
+          title: '成功',
+          message: '删除信息成功',
+          type: 'success'
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
+        this.$notify({
+          title: '消息',
           message: '已取消删除'
         });
       });
@@ -397,13 +408,14 @@ export default {
         postRequest('/userInfo/deleteStudent', this.userIds).then(res => {
           this.initList();
         })
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
+        this.$notify({
+          title: '成功',
+          message: '批量删除信息成功',
+          type: 'success'
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
+        this.$notify({
+          title: '信息',
           message: '已取消删除'
         });
       });

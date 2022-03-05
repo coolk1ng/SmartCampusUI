@@ -200,7 +200,11 @@ export default {
         if (res) {
           this.initList();
           this.dialogVisible = false;
-          Message.success({message: "审批成功"});
+          this.$notify({
+            title: '成功',
+            message: '审批申请成功',
+            type: 'success'
+          });
         }
       })
     }
