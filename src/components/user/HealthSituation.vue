@@ -354,21 +354,25 @@ export default {
       })
     },
     updateUserHealth(){
-      postRequest('/userHealth/updateUserHealth',this.userHealth).then(res=>{
-        if (res){
-          this.$notify({
-            title: '成功',
-            message: '健康状况信息编辑成功',
-            type: 'success'
-          });
-        }else{
-          this.$notify.error({
-            title: '错误',
-            message: '编辑失败',
-          });
+      this.$refs.form.validate((valid)=>{
+        if (valid){
+          postRequest('/userHealth/updateUserHealth',this.userHealth).then(res=>{
+            if (res){
+              this.$notify({
+                title: '成功',
+                message: '健康状况信息编辑成功',
+                type: 'success'
+              });
+            }else{
+              this.$notify.error({
+                title: '错误',
+                message: '编辑失败',
+              });
+            }
+            this.dialogVisible = false;
+            this.initUserHealthList();
+          })
         }
-        this.dialogVisible = false;
-        this.initUserHealthList();
       })
     },
 
@@ -384,12 +388,25 @@ export default {
      * 填报
      */
     InsertHealthInfo(){
-      postRequest('/userHealth/insertHealthInfo',this.userHealth).then(res=>{
-        if (res){
-          this.$message.success(res.data.message);
+      this.$refs.form.validate((valid)=>{
+        if (valid){
+          postRequest('/userHealth/insertHealthInfo',this.userHealth).then(res=>{
+            if (res){
+              this.$notify({
+                title: '成功',
+                message: '健康状况信息编辑成功',
+                type: 'success'
+              });
+            }else{
+              this.$notify.error({
+                title: '错误',
+                message: '编辑失败',
+              });
+            }
+            this.dialogVisible2 = false;
+            this.initUserHealthList();
+          })
         }
-        this.dialogVisible2 = false;
-        this.initUserHealthList();
       })
     },
   }

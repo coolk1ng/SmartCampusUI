@@ -76,9 +76,16 @@ export default {
                */
               let path = this.$route.query.redirect;
               this.$router.replace(path === '/' || path === undefined ? '/firstPicture' : path);
-              Message.success({message: resp.message});
+              this.$notify({
+                title: '成功',
+                message: resp.message,
+                type: 'success'
+              });
             }else{
-              Message.error({message: resp.message});
+              this.$notify.error({
+                title: '错误',
+                message: resp.message,
+              });
             }
           })
         } else {

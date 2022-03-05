@@ -71,14 +71,15 @@ export default {
           sessionStorage.clear();
           this.$router.push('/');
         })
-        this.$message({
-          type: 'success',
-          message: '注销成功!'
+        this.$notify({
+          title: '成功',
+          message: '注销成功',
+          type: 'success'
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消'
+        this.$notify.info({
+          title: '消息',
+          message: '以取消'
         });
       });
     }
