@@ -6,7 +6,7 @@
           <el-input v-model="applyParam.name" size="small" clearable maxlength="4"></el-input>
         </el-form-item>
         <el-form-item label="审批结果" style="margin-left: 20px">
-          <el-select v-model="applyParam.applyState" size="small">
+          <el-select v-model="applyParam.applyState" size="small" placeholder="" clearable>
             <el-option label="待审批" value="1"></el-option>
             <el-option label="已审批" value="0"></el-option>
           </el-select>

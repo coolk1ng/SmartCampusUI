@@ -344,7 +344,7 @@ export default {
               if(this.student.id){
                 this.$notify({
                   title: '成功',
-                  message: '编辑条学生信息成功',
+                  message: '编辑成功',
                   type: 'success'
                 });
                 this.dialogVisible = false;
@@ -352,7 +352,7 @@ export default {
               }else{
                 this.$notify({
                   title: '成功',
-                  message: '新增学生信息成功',
+                  message: '新增成功',
                   type: 'success'
                 });
                 this.dialogVisible = false;

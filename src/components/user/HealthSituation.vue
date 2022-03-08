@@ -360,7 +360,7 @@ export default {
             if (res){
               this.$notify({
                 title: '成功',
-                message: '健康状况信息编辑成功',
+                message: '编辑成功',
                 type: 'success'
               });
             }else{
@@ -394,13 +394,13 @@ export default {
             if (res){
               this.$notify({
                 title: '成功',
-                message: '健康状况信息编辑成功',
+                message: '填报成功',
                 type: 'success'
               });
             }else{
               this.$notify.error({
                 title: '错误',
-                message: '编辑失败',
+                message: '填报失败',
               });
             }
             this.dialogVisible2 = false;

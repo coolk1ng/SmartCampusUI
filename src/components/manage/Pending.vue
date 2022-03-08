@@ -202,7 +202,7 @@ export default {
           this.dialogVisible = false;
           this.$notify({
             title: '成功',
-            message: '审批申请成功',
+            message: '审批成功',
             type: 'success'
           });
         }

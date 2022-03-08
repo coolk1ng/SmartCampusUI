@@ -125,7 +125,7 @@ export default {
             if (res) {
               this.$notify({
                 title: '成功',
-                message: '已提交一条申请',
+                message: '申请成功',
                 type: 'success'
               });
               this.applyInfo ={}

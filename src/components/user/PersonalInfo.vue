@@ -384,7 +384,7 @@ export default {
           this.dialogVisible = false;
           this.$notify({
             title: '成功',
-            message: '个人信息编辑成功',
+            message: '编辑成功',
             type: 'success'
           });
           this.getPersonalInfo();

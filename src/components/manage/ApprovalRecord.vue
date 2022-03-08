@@ -242,7 +242,7 @@ export default {
           this.initList();
           this.$notify({
             title: '成功',
-            message: '编辑信息成功',
+            message: '编辑成功',
             type: 'success'
           });
         }
@@ -266,7 +266,7 @@ export default {
         })
         this.$notify({
           title: '成功',
-          message: '删除信息成功',
+          message: '删除成功',
           type: 'success'
         });
       }).catch(() => {
