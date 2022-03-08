@@ -99,7 +99,7 @@
     </div>
     <!--    弹出框-->
     <el-dialog
-        title="学生详情"
+        title="学生信息"
         :visible.sync="dialogVisible"
         width="50%">
       <el-form ref="form" :rules="rules" :model="student" size="mini" :disabled="disabled">
@@ -269,7 +269,7 @@ export default {
         studentId: [
           { required: true, message: '请输入学号', trigger: 'blur' }
         ]
-      }
+      },
     }
   },
   methods: {
@@ -350,10 +350,9 @@ export default {
                 this.dialogVisible = false;
                 this.initList();
               }else{
-                this.$notify({
-                  title: '成功',
-                  message: '新增成功',
-                  type: 'success'
+                this.$notify.error({
+                  title: '失败',
+                  message: '新增失败',
                 });
                 this.dialogVisible = false;
                 this.initList();

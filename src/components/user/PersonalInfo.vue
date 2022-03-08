@@ -152,7 +152,7 @@
         title="个人信息"
         :visible.sync="dialogVisible"
         width="50%">
-      <el-form ref="form" size="mini" :rules="rules">
+      <el-form ref="form" size="mini" :rules="rules" :model="personalInfo">
         <el-row>
           <el-col :span="9" :offset="2">
             <el-form-item label="用户名:" prop="userName">
@@ -320,13 +320,7 @@ export default {
           {required: true, message: '请输入姓名', trigger: 'blur'},
         ],
         password: [
-          {required: true, message: '请输入密码', trigger: 'blur'},
-        ],
-        sex: [
-          {required: true, message: '请输入性别', trigger: 'blur'},
-        ],
-        idCardNum: [
-          {required: true, message: '请输入身份证号', trigger: 'blur'},
+          {required: true, message: '请输入密码', trigger: 'blur'}
         ],
         studentId: [
           {required: true, message: '请输入学号', trigger: 'blur'},
@@ -379,7 +373,7 @@ export default {
       })
     },
     updateUserInfo() {
-      postRequest('/user/updatePersonalInfo', this.personalInfo).then(res => {
+      /*postRequest('/user/updatePersonalInfo', this.personalInfo).then(res => {
         if (res) {
           this.dialogVisible = false;
           this.$notify({
@@ -388,6 +382,28 @@ export default {
             type: 'success'
           });
           this.getPersonalInfo();
+        }
+      })*/
+      this.$refs.form.validate((valid)=>{
+        if (valid){
+          postRequest('/user/updatePersonalInfo', this.personalInfo).then(res => {
+            if (res) {
+                this.$notify({
+                  title: '成功',
+                  message: '编辑成功',
+                  type: 'success'
+                });
+              this.dialogVisible = false;
+              this.getPersonalInfo();
+              }else{
+                this.$notify.error({
+                  title: '失败',
+                  message: '新增成功'
+                });
+                this.dialogVisible = false;
+                this.getPersonalInfo();
+              }
+          })
         }
       })
     }
