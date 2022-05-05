@@ -50,7 +50,7 @@ axios.interceptors.response.use(success => {
     }
 });
 
-let base = '/smart-campus';
+let base = '';
 
 /**
  * post请求

@@ -31,7 +31,7 @@ export default {
   name: "Login",
   data() {
     return {
-      captchaUrl: '/smart-campus/captcha?time=' + new Date(),
+      captchaUrl: '/captcha?time=' + new Date(),
       loginForm: {
         username: '',
         password: '',
@@ -57,7 +57,7 @@ export default {
   methods: {
     //更新验证码
     updateCaptcha() {
-      this.captchaUrl = '/smart-campus/captcha?time=' + new Date();
+      this.captchaUrl = '/captcha?time=' + new Date();
     },
     //登录
     submitForm() {
