@@ -2,7 +2,7 @@
   <div class="form-div">
     <el-form label-width="150px" :model="applyInfo" :rules="rules" ref="form">
       <el-form-item label="姓名" prop="name">
-        <el-input size="mini" v-model="applyInfo.name"></el-input>
+        <el-input size="mini" v-model="userInfo.name" disabled></el-input>
       </el-form-item>
       <el-form-item label="班级" prop="className">
         <el-input v-model="applyInfo.className" size="mini"></el-input>
@@ -59,6 +59,9 @@ import {postRequest} from "@/utils/request";
 
 export default {
   name: "ApplyInfo",
+  created() {
+    this.getUserInfo()
+  },
   data() {
     return {
       applyInfo: {
@@ -77,10 +80,8 @@ export default {
         trafficNum: '', //交通工具班次
         telephone: '' //联系方式
       },
+      userInfo: {},
       rules: {
-        name: [
-          { required: true, message: '请输入姓名', trigger: 'blur' }
-        ],
         className: [
           { required: true, message: '请输入班级', trigger: 'blur' }
         ],
@@ -133,8 +134,14 @@ export default {
           })
         }
       })
-
-    }
+    },
+    /**
+     * 获取用户信息
+     */
+    getUserInfo() {
+      this.userInfo = JSON.parse(window.sessionStorage.getItem('user')).data;
+      console.log(this.userInfo);
+    },
   }
 }
 </script>

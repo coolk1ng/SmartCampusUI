@@ -23,7 +23,7 @@
       </el-form-item>
       <el-form-item>
         <el-tooltip content="填报" effect="dark">
-          <el-button type="success" size="small" @click="showInsertPage" v-if="healthInfoToday ='1'"><i class="fa fa-paint-brush"></i></el-button>
+          <el-button type="success" size="small" @click="showInsertPage" v-if="!userHealthToday"><i class="fa fa-paint-brush"></i></el-button>
         </el-tooltip>
       </el-form-item>
     </el-form>
@@ -263,7 +263,7 @@
       <el-row>
         <el-col :offset="11">
           <el-form-item>
-            <el-button size="mini" type="success" @click="InsertHealthInfo">填报</el-button>
+            <el-button size="mini" type="success" @click="insertHealthInfo">填报</el-button>
           </el-form-item>
         </el-col>
       </el-row>
@@ -278,7 +278,8 @@ import {postRequest} from "../../utils/request";
 export default {
   name: "HealthSituation",
   created() {
-    this.initUserHealthList();
+    this.initUserHealthList()
+    this.getHealthInfoToday()
   },
   data(){
     return {
@@ -287,6 +288,18 @@ export default {
         healthCodeColor: '',
         createTime: '',
         name: ''
+      },
+      userHealthToday:{
+        id: '',
+        userId: '',
+        isFever: '',
+        healthCodeColor: '',
+        createTime: '',
+        isContactRisk: '',
+        isTrue: '',
+        temperature: '',
+        localToday: '',
+        updateTime: ''
       },
       userHealth: {
         id: '',
@@ -387,14 +400,14 @@ export default {
     /**
      * 填报
      */
-    InsertHealthInfo(){
+    insertHealthInfo(){
       this.$refs.form.validate((valid)=>{
         if (valid){
           postRequest('/userHealth/insertHealthInfo',this.userHealth).then(res=>{
             if (res){
               this.$notify({
                 title: '成功',
-                message: '填报成功',
+                message: res.message,
                 type: 'success'
               });
             }else{
@@ -409,6 +422,17 @@ export default {
         }
       })
     },
+    /**
+     * 查询当日健康信息
+     */
+    getHealthInfoToday(){
+      postRequest('/userHealth/getHealthInfoToday',null).then(res=>{
+        if (res){
+          this.userHealthToday = res.data;
+          console.log(this.userHealthToday)
+        }
+      })
+    }
   }
 }
 </script>
