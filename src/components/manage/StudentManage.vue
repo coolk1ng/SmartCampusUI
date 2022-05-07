@@ -12,7 +12,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="班级" style="margin-left: 20px">
-          <el-input v-model="searchParam.class" size="small" clearable></el-input>
+          <el-input v-model="searchParam.className" size="small" clearable></el-input>
         </el-form-item>
         <el-form-item>
           <el-tooltip content="查询" effect="dark">
