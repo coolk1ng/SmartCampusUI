@@ -418,6 +418,7 @@ export default {
             }
             this.dialogVisible2 = false;
             this.initUserHealthList();
+            this.getHealthInfoToday();
           })
         }
       })
