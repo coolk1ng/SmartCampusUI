@@ -1,6 +1,7 @@
 <template>
   <div class="login-div">
     <el-form :rules="rules"
+             @submit.native.pre.prevent
              ref="form"
              :model="loginForm"
              class="formStyle">
@@ -17,7 +18,7 @@
         <img :src="captchaUrl" @click="updateCaptcha" style="margin-left: 10px" width="100px" height="39px">
       </el-form-item>
 <!--      <el-checkbox v-model="checked" class="remember">记住我</el-checkbox>-->
-      <el-button type="primary" style="width:100%" @click="submitForm">登录</el-button>
+      <el-button type="primary" style="width:100%" @click="submitForm" native-type="submit">登录</el-button>
     </el-form>
   </div>
 </template>
